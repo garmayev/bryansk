@@ -1,0 +1,25 @@
+{"data":
+[
+	{
+		"id":"1850",
+		"name":"Октябрьское г. Тамбов",
+		"address":"— Официальный дилер Ростсельмаш",
+		"phone":["8 800 302-33-37"],
+		"mail":["oktober-rsm@obsagro.ru"],
+		"site":"rostselmash.com",
+		"link":"",
+		"coords":["52.722615, 41.381226"]
+	},
+	{
+		"id":"1850",
+		"name":"Октябрьское г. Липецк",
+		"address":"— Официальный дилер Ростсельмаш",
+		"phone":["8 800 302-33-37"],
+		"mail":["oktober-rsm@obsagro.ru"],
+		"site":"rostselmash.com",
+		"link":"",
+		"coords":["52.657322, 39.646947"]
+	}
+
+]
+}

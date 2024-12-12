@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#rt-yandex-map > ymaps {
+    z-index: 100 !important;
+}
+
+#rt-google-map {
+    display: none !important;
+}
+.progress-load {
+    background-color: #d0043c;
+    position: fixed;
+    height: 2px;
+    animation-name: progress;
+    animation-duration: 4s;
+    width: 95%;
+    transform-origin: 0;
+}
+
+.preloader {
+    opacity: 0;
+}
+
+.loaded .preloader {
+    transition: 1s;
+    opacity: 1;
+}
+
+.loaded .progress-load {
+    animation-duration: 2s;
+    opacity: 0;
+    transition-property: opacity;
+    transition-delay: 1s;
+    transition-duration: 1s;
+    width: 100%;
+}
+
+@keyframes progress {
+    from {
+        transform: scale(0, 1);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+}
+
+.footer__address {
+    grid-area: 1 / 2 / 0 / 5 !important;
+}
