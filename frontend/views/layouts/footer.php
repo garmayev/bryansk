@@ -20,7 +20,7 @@ $cleanPhone = preg_replace('/[\ \(\)\+\-]/', '', $branch->phone);
             </ul>
             <ul class="footer__contacts-social footer__social-list" data-animate="" data-animate-sequence="">
                 <li class="footer__social-item">
-                    <a href="https://vk.com/oktyabrskoe_rsm?ysclid=m3ec7if5u7727949514" target="_blank"
+                    <a href="https://vk.com/agropromrsm" target="_blank"
                        class="footer__social-link footer__social-link--vk" aria-label="VK">
                         <svg width="24" height="24" viewbox="0 0 24 24" fill="currentColor"
                              xmlns="http://www.w3.org/2000/svg">
@@ -42,7 +42,7 @@ $cleanPhone = preg_replace('/[\ \(\)\+\-]/', '', $branch->phone);
                     </a>
                 </li>
                 <li class="footer__social-item">
-                    <a href="https://t.me/oktyabrskoersm" target="_blank"
+                    <a href="https://t.me/agropromservis1" target="_blank"
                        class="footer__social-link footer__social-link--telegram" aria-label="Telegram">
                         <svg width="24" height="24" viewbox="0 0 24 24" fill="currentColor"
                              xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +70,7 @@ $cleanPhone = preg_replace('/[\ \(\)\+\-]/', '', $branch->phone);
             <div class="footer__logo">
                 <span class="footer__logo-wrapper">
                     <div class="n-logo-t">
-                        <a href="/"><img src="/images/logo_white.png" alt="" style="width: 250px;"></a>
+                        <a href="/"><img src="/images/logo.png" alt="" style="width: 250px;"></a>
                     </div>
                 </span>
             </div>
@@ -131,7 +131,7 @@ $cleanPhone = preg_replace('/[\ \(\)\+\-]/', '', $branch->phone);
             <div class="footer__address">
                 <ul class="footer__address-list">
                     <?php
-                    foreach (\common\models\Branch::find()->all() as $item) {
+                    foreach (\common\models\Branch::find()->where(['type' => 1])->all() as $item) {
                         echo "
                     <li class='footer__address-item'>
                         <span class='footer__address-item-link slide-vertical'>
@@ -159,7 +159,7 @@ $cleanPhone = preg_replace('/[\ \(\)\+\-]/', '', $branch->phone);
             </div>
             <div class="footer__copyrights">
 							<span class="footer__copyrights-text">
-								© 2004-2024 АО <?= $branch->title ?>.<br/>
+								© 2003-<?= date('Y') ?> <?= $branch->title ?>.<br/>
 								Все права защищены
 							</span>
             </div>
@@ -175,3 +175,16 @@ $cleanPhone = preg_replace('/[\ \(\)\+\-]/', '', $branch->phone);
         </div>
     </div>
 </footer>
+<style>
+    .footer__address-list {
+        display: flex;
+        flex-direction: row;
+    }
+    @media (max-width: 989.98px) {
+        .footer__address-list {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+</style>

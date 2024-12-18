@@ -22,25 +22,45 @@ class DataController extends Controller
         $this->faker = Factory::create('ru-RU');
         $this->branches = [
             [
-                'title' => 'АО "Октябрьское"',
-                'region' => 'Тамбовская область',
-                'address' => '392014, г. Тамбов, ул. Киквидзе, 77',
-                'latitude' => 52.722615,
-                'longitude' => 41.381226,
-                'phone' => '8 (800) 302 33 37',
-                'email' => 'oktober-rsm@obsagro.ru',
+                'title' => 'ООО "Агропромсервис"',
+                'region' => 'Курская область',
+                'address' => '305023, Курская область, Курск, 2-ой Литовский переулок, 5, оф. 1',
+                'latitude' => 51.701563,
+                'longitude' => 36.171338,
+                'phone' => '8 (800) 250 91 88',
+                'email' => 'info@rd-servis.ru',
                 'type' => 1,
-                'city' => 'Тамбов'
+                'city' => 'Курск'
             ], [
-                'title' => 'АО "Октябрьское"',
-                'region' => 'Липецкая область',
-                'address' => '398007, г. Липецк, 299 км федеральной автодороги Орел-Тамбов, Владение 2в',
-                'latitude' => 52.657322,
-                'longitude' => 39.646947,
-                'phone' => '8 (800) 302 33 37',
-                'email' => 'oktober-rsm@obsagro.ru',
+                'title' => 'ООО "Агропромсервис"',
+                'region' => 'Орловская область',
+                'address' => '302520, Орловская область, Орловский район, ПГТ Знаменка, Ул. Автодорожная, д.8',
+                'latitude' => 52.890403,
+                'longitude' => 35.975407,
+                'phone' => '8 (800) 250 91 88',
+                'email' => 'info@rd-servis.ru',
                 'type' => 1,
-                'city' => 'Липецк',
+                'city' => 'Орел',
+            ], [
+                'title' => 'ООО "Агропромсервис"',
+                'region' => 'Брянская область',
+                'address' => '241522, Брянский район, село Октябрьское, ул.Нагорная, 124',
+                'latitude' => 53.225360,
+                'longitude' => 34.211619,
+                'phone' => '8 (483) 230 00 35',
+                'email' => 'info@rd-servis.ru',
+                'type' => 1,
+                'city' => 'Брянск',
+            ], [
+                'title' => 'ООО "Агропромсервис"',
+                'region' => 'Курская область',
+                'address' => '306530, Курская область, г.Щигры, ул.Лазарева, д.№17',
+                'latitude' => 51.879826,
+                'longitude' => 36.869527,
+                'phone' => '8 (471) 454 14 16 ',
+                'email' => 'rdshchigry@mail.ru',
+                'type' => 0,
+                'city' => 'Щигры',
             ],
         ];
         $this->users = [
@@ -52,12 +72,32 @@ class DataController extends Controller
                 'status' => 10,
                 'created_at' => time(),
                 'updated_at' => time()
+            ], [
+                'username' => 'vlad2024',
+                'auth_key' => \Yii::$app->security->generateRandomString(),
+                'password_hash' => \Yii::$app->security->generatePasswordHash('vlad2024'),
+                'email' => 'vl.ivanyuk@icloud.com',
+                'status' => 10,
+                'created_at' => time(),
+                'updated_at' => time()
             ]
         ];
         $this->slider = [
             [
-                'title' => 'Главная для первого филиала',
+                'title' => 'Главная для курского филиала',
                 'branch_id' => 1,
+                'is_main' => 1,
+            ], [
+                'title' => 'Главная для орловского филиала',
+                'branch_id' => 2,
+                'is_main' => 1,
+            ], [
+                'title' => 'Главная для брянского филиала',
+                'branch_id' => 3,
+                'is_main' => 1,
+            ], [
+                'title' => 'Главная для филиала г Щугры',
+                'branch_id' => 4,
                 'is_main' => 1,
             ]
         ];
@@ -93,6 +133,15 @@ class DataController extends Controller
         foreach ($this->posts as $post) {
             $p = new Post($post);
             $p->save();
+        }
+    }
+
+    public function actionTest()
+    {
+        if (1 && 1) {
+            echo "TRUE";
+        } else {
+            echo "FALSE";
         }
     }
 }

@@ -20,23 +20,24 @@ class FinanceController extends Controller
         $this->enableCsrfValidation = false;
         $data = \Yii::$app->request->post();
 
-        preg_match('/^[а-яА-ЯёЁ\s]*$/', $data["PROP_NAME"], $nameMatches);
-        $new_array = array_filter($nameMatches, function($element) {
-            return $element !== "";
-        });
-        if (count($new_array)) {
+        $res = preg_match('/^[a-zA-Z0-9\s]*$/', $data["PROP_NAME"], $nameMatches);
+        $new_array = array_filter($nameMatches);
+        if ($res && count($nameMatches)) {
             return $this->redirect(\Yii::$app->request->referrer);
         }
-        preg_match('/^[\w\-\.]+@[\w-]+\.+[\w-]{2,4}$/', $data["PROP_EMAIL"], $emailMatches);
-        if (count($emailMatches) && $emailMatches[0] === '') {
+        $res = preg_match('/^[\w\-\.]+@[\w-]+\.+[\w-]{2,4}$/', $data["PROP_EMAIL"], $emailMatches);
+        $emailMatches = array_filter($new_array);
+        if (!$res && !count($emailMatches)) {
             return $this->redirect(\Yii::$app->request->referrer);
         }
-        preg_match('/^79[\d]{9}$/', str_replace(['+', '-', ' ', '(', ')'], "", $data["PROP_PHONE"]), $phoneMatches);
-        if (count($phoneMatches) && $phoneMatches[0] === '') {
+        $res = preg_match('/^[78]9{1}[0-9]{9}$/', str_replace(['+', '-', ' ', '(', ')'], "", $data["PROP_PHONE"]), $phoneMatches);
+        $phoneMatches = array_filter($phoneMatches);
+        if (!$res && !count($phoneMatches)) {
             return $this->redirect(\Yii::$app->request->referrer);
         }
-        preg_match('/http/', $data["PROP_MESSAGE"], $messageMatches);
-        if (count($messageMatches) > 0) {
+        $res = preg_match('/http/', $data["PROP_MESSAGE"], $messageMatches);
+        $messageMatches = array_filter($messageMatches);
+        if ($res && count($messageMatches)) {
             return $this->redirect(\Yii::$app->request->referrer);
         }
 

@@ -20,7 +20,7 @@ class SystemsController extends \yii\web\Controller
     public function actionView($code)
     {
         $model = Section::findOne(['code' => $code]);
-        \Yii::error($code);
+//        \Yii::error($code);
         return $this->render('view', [
             'model' => $model
         ]);

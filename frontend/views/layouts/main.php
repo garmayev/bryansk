@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 
 \frontend\assets\RtmAsset::register($this);
 $this->beginPage();
-
+\Yii::$app->session->open();
 if ( !\Yii::$app->session->has('branch') ) {
     \Yii::$app->session->set('branch', 1);
     \Yii::$app->response->redirect(['/site/index']);
@@ -53,7 +53,7 @@ if ( !\Yii::$app->session->has('branch') ) {
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="robots" content="index, follow"/>
     <meta name="description"
-          content="АО Октябрьское - официальный дилер техники Ростсельмаш в Тамбовской и Липецкой областях"/>
+          content="ООО Агропромсервис - официальный дилер техники Ростсельмаш в Курской, Брянской и Орловской областях"/>
     <script>
         const scriptList = [
             "/js/script.js",
@@ -2449,22 +2449,6 @@ $this->endBody();
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-layout__privacy">
-                                            <div class="field theme-primary">
-                                                <div class="control">
-                                                    <?= $form->field($model, 'verifyCode', ['enableAjaxValidation'=>true])->widget(\yii\captcha\Captcha::className(), [
-                                                        'captchaAction'=>'/site/captcha',
-                                                        'imageOptions'=>[
-                                                            'id'=>'captcha-img',
-                                                            'alt'=>'Click change image',
-                                                            'title'=>'Click change image',
-                                                            'style'=>'cursor:pointer'
-                                                        ],
-                                                        'template' => '<div><div>{image}</div><div>{input}</div></div>',
-                                                    ])->label(false) ?>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 <?php
                                     \yii\bootstrap5\ActiveForm::end();
@@ -2857,7 +2841,7 @@ $this->endBody();
                                 <div class="modal__left">
                                     <ul class="region-list">
                                         <?php
-                                        $branches = \common\models\Branch::find()->all();
+                                        $branches = \common\models\Branch::find()->where(['type' => 1])->all();
                                         foreach ($branches as $branch) {
                                             echo "<li><a class=\"link-action\" href=\"/branch/set?id={$branch->id}\">
                                                 <span class=\"link-action__text\">{$branch->city}</span>

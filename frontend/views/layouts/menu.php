@@ -32,7 +32,7 @@ $logoRed = Config::find()->where(['title' => 'logo_red'])->one();
             align-items: start;
         }
         .n-logo-t a img {
-            margin-top: -30px;
+//            margin-top: -30px;
             width: 200px;
             float: left;
         }

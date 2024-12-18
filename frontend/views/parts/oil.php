@@ -1,6 +1,9 @@
 <?php
 $this->title = "Масло Ростсельмаш G-PROFI";
 ?>
+<script>
+        setTheme('black');
+</script>
 <main>
                             <!--'start_frame_cache_hero-set'-->	<div class="hero " data-breadcrumb-block="">
 		<div class="hero__inner wrapper wrap-pl-1 wrap-pr-1">

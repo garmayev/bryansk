@@ -78,10 +78,15 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="contacts-table__table">
             <?php
             $branches = \common\models\Branch::find()->all();
+            $b = [];
             foreach ($branches as $branch) {
+                $b[$branch->region][] = $branch;
+            }
+            foreach ($b as $region => $c) {
                 $cleanPhone = preg_replace('/[\ \(\)\+]/', '', $branch->phone);
-                echo "<p class='h3 my-16'>{$branch->region}</p>";
-                echo "
+                echo "<p class='h3 my-16'>{$region}</p>";
+                foreach ($c as $branch) {
+                    echo "
 <div class='contacts-table__row'>
     <div class='contacts-table__cell  contacts-table__cell-heading'>
         <div class='h4'>{$branch->title}</div>
@@ -114,6 +119,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>";
+                }
             }
             ?>
         </div>
@@ -279,7 +285,7 @@ $this->registerJsVar('models', $branches);
 
         const myMap = new ymaps.Map("rt-yandex-map-custom", {
             center: [centerLat / models.length, centerLong / models.length],
-            zoom: 9,
+            zoom: 7,
             controls: ['zoomControl'],
         });
 
@@ -294,11 +300,11 @@ $this->registerJsVar('models', $branches);
         }), placemarks = [];
         models.map(model => {
             placemarks.push(new ymaps.Placemark([model.latitude, model.longitude], {
-                balloonContentHeader: model.title,
+                balloonContentHeader: model.type ? `Дилерский центр, г. ${model.city}` : `Опорный пункт, г. ${model.city}`,
                 balloonContentBody: `<p>${model.address}</p><p>Телефон: ${model.phone}</p>`
             }, {
                 iconLayout: 'default#imageWithContent',
-                iconImageHref: '/dist/img/map-icon/001.svg',
+                iconImageHref: model.type ? '/dist/img/map-icon/001.svg' : '/dist/img/map-icon/003.svg',
                 iconImageSize: [76, 43],
                 iconImageOffset: [-8, -42],
                 interactiveZIndex: true,

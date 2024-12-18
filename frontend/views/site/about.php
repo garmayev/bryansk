@@ -17,24 +17,28 @@ $this->registerJsFile("/js/script.js");
         setTheme("white");
     });
 </script>
+<style>
+    @media (max-width: 989.98px) {
+        .slider-story__content {
+            padding-bottom: 70px;
+        }
+    }
+
+</style>
 <div class="hero-main">
     <div class="hero-main__wrap">
         <div class="main-slider main-slider--not-slider">
             <canvas class="main-slider__canvas main-slider__canvas--loaded" width="1866" height="1044"></canvas>
             <div class="main-slider__slides">
                 <div class="main-slider__slides-overlay"></div>
-                <div data-id="0" id="bx_3218110189_76"
-                     data-src="/images/about.jpg"
+                <div data-id="0" data-src="/images/997.jpg"
                      class="main-slider-slide active" title="О компании" alt="О компании">
                     <div class="main-slider-slide__content">
                         <div class="main-slider-slide__main">
                             <div class="main-slider-slide__title h2">О компании</div>
-                            <div class="main-slider-slide__text">
-                                <p>АО «Октябрьское» официальный дилер Ростсельмаш в Тамбовской и Липецкой областях по
-                                    поставкам и послепродажному обслуживанию крупногабаритной сельскохозяйственной
-                                    техники, прицепному и самоходному оборудованию для всех видов полевых работ. Для
-                                    каждого хозяйства, мы можем предложить возможность приобретать и обслуживать технику
-                                    технику в одном месте. Быть уверенным в надежной техники и качественном сервисе.</p>
+                            <div class="main-slider-slide__text" style="margin-top: 1rem;">
+<p>ООО «Агропромсервис» является официальным сертифицированным дилером «Ростсельмаш» с 2003 года.</p>
+<p>В год продаётся порядка 200 единиц комбайнов, тракторов. Сельхозпроизводители, заручившиеся поддержкой «Агропромсервис», имеют возможность в одной компании получить полный набор инструментов для ведения сельхозбизнеса</p>
                             </div>
                             <div class="main-slider-slide__actions">
                                 <div class="main-slider-slide__action ">
@@ -45,15 +49,15 @@ $this->registerJsFile("/js/script.js");
                             <div class="main-slider-slide__fact-wrap">
                                 <div class="factor animate" data-viewport-trigger="" data-animate="">
                                     <div class="factor__text text-default animate" data-animate="fade-in-up"
-                                         data-animate-delay="1">Поставлено более
+                                         data-animate-delay="1">
                                     </div>
                                     <div class="factor__head">
                                         <span class="factor__number">
                                             <span class="factor__number-value animate" data-counter=""
-                                                  data-counter-separator=" ">300</span>
+                                                  data-counter-separator=" ">3</span>
                                         </span>
                                         <span class="factor__suffix">
-                                            <span style="display: none">300</span> моделей техники
+                                            <span style="display: none">3</span> региона присутствия
                                         </span>
                                     </div>
                                 </div>
@@ -61,15 +65,15 @@ $this->registerJsFile("/js/script.js");
                             <div class="main-slider-slide__fact-wrap">
                                 <div class="factor animate" data-viewport-trigger="" data-animate="">
                                     <div class="factor__text text-default animate" data-animate="fade-in-up"
-                                         data-animate-delay="1">Более
+                                         data-animate-delay="1">
                                     </div>
                                     <div class="factor__head">
                                         <span class="factor__number">
                                             <span class="factor__number-value animate" data-counter=""
-                                                  data-counter-separator=" ">30</span>
+                                                  data-counter-separator=" ">22</span>
                                         </span>
                                         <span class="factor__suffix">
-                                            <span style="display: none">30</span> лет успешной работы
+                                            <span style="display: none">22</span> года успешной работы
                                         </span>
                                     </div>
                                 </div>
@@ -119,7 +123,7 @@ $this->registerJsFile("/js/script.js");
         </div>
     </div>
 </div>
-<div class="wrapper wrap-pl-1 wrap-pr-1 mt-56 mt-md-80 mt-lg-96 mb-72 ">
+<div class="wrapper wrap-pl-1 wrap-pr-1 mt-56 mt-md-80 mt-lg-96 mb-72 " style="margin-top: 20px !important;">
     <div class="general-description">
         <div class="general-description__wrap">
             <div class="general-description__content general-description__content--factor ">
@@ -129,30 +133,30 @@ $this->registerJsFile("/js/script.js");
                         <li class="general-description__factor">
                             <div class="factor animate" data-viewport-trigger="" data-animate="">
                                 <div class="factor__text text-default animate" data-animate="fade-in-up"
-                                     data-animate-delay="1">моделей и модификаций техники более
+                                     data-animate-delay="1">Поставляем свыше
                                 </div>
                                 <div class="factor__head">
 						    <span class="factor__number">
-							<span class="factor__number-value" data-counter="">150</span>
+							<span class="factor__number-value" data-counter="">200</span>
 						    </span>
                                     <span class="factor__suffix">
-							<span style="display: none">150</span>
-							единиц													</span>
+							<span style="display: none">0</span>
+							единиц техники в год</span>
                                 </div>
                             </div>
                         </li>
                         <li class="general-description__factor">
                             <div class="factor animate" data-viewport-trigger="" data-animate="">
                                 <div class="factor__text text-default animate" data-animate="fade-in-up"
-                                     data-animate-delay="1">официальный дилер Ростсельмаш
+                                     data-animate-delay="1">&nbsp;
                                 </div>
                                 <div class="factor__head">
 						    <span class="factor__number">
-							<span class="factor__number-value" data-counter="">20</span>
+							<span class="factor__number-value" data-counter="">22</span>
 						    </span>
                                     <span class="factor__suffix">
-							<span style="display: none">20</span>
-							лет успешной работы
+							<span style="display: none">0</span>
+							года успешной работы
                                                     </span>
                                 </div>
                             </div>
@@ -164,11 +168,11 @@ $this->registerJsFile("/js/script.js");
                                 </div>
                                 <div class="factor__head">
 						    <span class="factor__number">
-							<span class="factor__number-value" data-counter="">2</span>
+							<span class="factor__number-value" data-counter="">3</span>
 						    </span>
                                     <span class="factor__suffix">
 							<span style="display: none">0</span>
-							региона присутствия Тамбовская и Липецкая области
+							региона присутствия в Курске, Брянске и Орле
 						    </span>
                                 </div>
                             </div>
@@ -177,19 +181,11 @@ $this->registerJsFile("/js/script.js");
                 </div>
                 <div class="general-description__right general-description__right--wide">
                     <div class="general-description__description user-text">
-                        <p>Одним из ключевых приоритетов АО «Октябрьское» является забота о наших клиентах. Мы понимаем,
-                            что
-                            надежная и своевременная поддержка имеет критическое значение для успешного ведения
-                            сельскохозяйственного
-                            бизнеса. Поэтому мы предлагаем комплексное послепродажное обслуживание, включающее
-                            регулярное техническое
-                            обслуживание, ремонт и поставку запасных частей. Наши квалифицированные инженеры и техники
-                            всегда готовы
-                            оперативно решить любые возникающие проблемы, минимизируя простои и обеспечивая
-                            бесперебойную работу вашей
-                            техники.</p>
-                        <p class="mt-40">Мы гордимся тем, что предоставляем нашим клиентам отличный сервис, который
-                            включает в себя:</p>
+<p>Агпропромсервис – это забота о своих клиентах. Мы, как никто другой, знаем, что агробизнес нуждается в надежной и своевременной поддержке. Поэтому, наша компания предлагает современную сельскохозяйственную технику, комплексное послепродажное обслуживание, качественный ремонт и поставку оригинальных запасных частей. </p>
+<br />
+<p>Работая с нами, Вы можете быть уверенны в том, что наши специалисты готовы оперативно решить любые возникающие проблемы, минимизируя простои и обеспечивая бесперебойную работу вашей техники, как в сезон, так в любое время. </p>
+<br />
+<p>Аграрии и хозяйства выбирают нас за высокий профессионализм, который заключается: </p>
                     </div>
                 </div>
             </div>
@@ -231,16 +227,14 @@ $this->registerJsFile("/js/script.js");
                                                     эксплуатации и обслуживания — мы всегда
                                                     рядом, чтобы помочь вам достичь наилучших результатов.
                                                 </li>
-                                                <p class="mt-40">АО «Октябрьское» — это не просто поставщик техники, это
-                                                    надежный партнер, который заботится о вашем успехе.
-                                                    Мы стремимся к долгосрочному сотрудничеству и готовы сделать все
-                                                    возможное, чтобы вы были довольны нашим
-                                                    сервисом и достигли высоких результатов в своем бизнесе.</p>
-
+                                                <p class="mt-40">Агропромсервис – официальный дилер Ростсельмаш. Мы 
+                                                    надежный партнер, который заботится о вашем успехе. Мы стремимся 
+                                                    к долгосрочному сотрудничеству и готовы вместе добиваться высоких 
+                                                    успехов в агропромышленном деле и сельском хозяйстве!</p>
                                         </div>
                                     </div>
                                     <div class="slider-story__image">
-                                        <img class="image is-cover" src="/images/146.jpg" alt="image">
+                                        <img class="image is-cover" src="/images/999.jpg" alt="image">
                                     </div>
                                         <a href="/site/certificate" class="btn btn--primary btn--hover-primary" style="position: absolute; right: 0; bottom: 0px;">
                                             <span class="btn__text">Наши сертификаты</span>
@@ -320,7 +314,7 @@ $this->registerJsFile("/js/script.js");
         <div class="wrapper wrap-pr-1 wrap-pl-1 mb-lg-64 mb-md-56 mb-32">
             <div class="map-box__top animate" data-animate="">
                 <h2 class="map-box__heading">Наш адрес</h2>
-                <p class="map-box__description text-default">Работаем на территории Тамбовской и Липецкой областей</p>
+                <p class="map-box__description text-default">Работаем на территории Курской, Брянской и Орловской областей</p>
             </div>
         </div>
         <div class="map-box__container animate" data-animate="">
@@ -341,12 +335,11 @@ $this->registerJsVar('models', $branches);
             centerLat += model.latitude
             centerLong += model.longitude
         })
-        console.log(centerLat, centerLong, models.length)
-        console.log([centerLat / models.length, centerLong / models.length]);
+        console.log(models)
 
         const myMap = new ymaps.Map("rt-yandex-map-custom", {
             center: [centerLat / models.length, centerLong / models.length],
-            zoom: 9,
+            zoom: 8,
             controls: ['zoomControl'],
         });
 
@@ -365,7 +358,7 @@ $this->registerJsVar('models', $branches);
                 balloonContentBody: `<p>${model.address}</p><p>Телефон: ${model.phone}</p>`
             }, {
                 iconLayout: 'default#imageWithContent',
-                iconImageHref: '/dist/img/map-icon/001.svg',
+                iconImageHref: model.type ? '/dist/img/map-icon/001.svg' : '/dist/img/map-icon/003.svg',
                 iconImageSize: [76, 43],
                 iconImageOffset: [-8, -42],
                 interactiveZIndex: true,

@@ -21,14 +21,12 @@ class ProductsController extends \yii\web\Controller
         $data = \Yii::$app->request->post();
 
         preg_match('/^[A-Za-z]*$/', $data["PROP_NAME"], $nameMatches);
-        $new_array = array_filter($nameMatches, function($element) {
-            return $element !== "";
-        });
+        $new_array = array_filter($nameMatches);
         if (count($new_array)) {
             return $this->redirect(\Yii::$app->request->referrer);
         }
         preg_match('/^79[\d]{9}$/', str_replace(['+', '-', ' ', '(', ')'], "", $data["PROP_PHONE"]), $phoneMatches);
-        if (count($phoneMatches) && $phoneMatches[0] === '') {
+        if (count($phoneMatches) === 0) {
             return $this->redirect(\Yii::$app->request->referrer);
         }
 

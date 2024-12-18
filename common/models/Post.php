@@ -71,7 +71,6 @@ class Post extends ActiveRecord
             $fileName = "/images/upload/{$this->file->baseName}.{$this->file->extension}";
             if ($this->file->saveAs(\Yii::getAlias('@frontend/web') . $fileName, false)) {
                 $this->image = $fileName;
-                \Yii::error($fileName);
                 return true;
             } else {
                 return false;

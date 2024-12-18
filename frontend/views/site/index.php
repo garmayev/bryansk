@@ -6,7 +6,7 @@
 
 use yii\helpers\Url;
 
-$this->title = "АО Октябрьское - официальный дилер техники Ростсельмаш в Бурятии";
+$this->title = "ООО Агропромсервис - официальный дилер техники Ростсельмаш в Курской, Орловской и Брянской областях";
 
 ?>
 <script>
@@ -213,7 +213,7 @@ $this->title = "АО Октябрьское - официальный дилер 
     <div class="events-list">
         <div class="events-list__wrap">
             <div class="events-list__head" data-animate="">
-                <div class="events-list__title h2">События Октябрьское</div>
+                <div class="events-list__title h2">События <?= $branch->title ?></div>
                 <div class="events-list__link">
                     <a href="/post/index" class="text-link text-default text-link--underline">Все события</a>
                 </div>
@@ -308,12 +308,16 @@ $this->title = "АО Октябрьское - официальный дилер 
                         <div class="contacts-table__table">
                             <?php
                             $branches = \common\models\Branch::find()->all();
+                            $b = [];
                             foreach ($branches as $branch) {
+                                $b[$branch->region][] = $branch;
+                            }
+                            foreach ($b as $region => $c) {
                                 $cleanPhone = preg_replace('/[\ \(\)\+\-]/', '', $branch->phone);
 
-                                echo "
-                            <p class=\"h3 my-16\">{$branch->region}</p>
-                            <div class=\"map-search-box__list-item dealer-map-list-item-js\">
+                                echo "<p class=\"h3 my-16\">{$branch->region}</p>";
+                                foreach ($c as $branch) {
+                                echo "<div class=\"map-search-box__list-item dealer-map-list-item-js\" style=\"margin: 2px 0;\">
                                 <div class=\"map-search-box__head\">
                                     <a href=\"/where-buy/68643/\" class=\"map-search-box__title h4\">{$branch->title}</a>
                                 </div>
@@ -367,6 +371,7 @@ $this->title = "АО Октябрьское - официальный дилер 
                                 </div>
                             </div>
                                 ";
+                                }
                             }
                             ?>
                         </div>
