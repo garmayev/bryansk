@@ -58,10 +58,19 @@ $this->title = "ООО Агропромсервис - официальный д�
             <div class="main-slider__slides">
                 <div class="main-slider__slides-overlay"></div>
                 <?php
+<<<<<<< HEAD
                 $branch = \common\models\Branch::findOne(\Yii::$app->session->get('branch'));
                 if (empty($branch)) {
                     $branch = \common\models\Branch::findOne(1);
                 }
+=======
+                $branch_id = \Yii::$app->session->get('branch');
+                if (is_null($branch_id)) {
+                    \Yii::$app->session->set('branch', 1);
+                    $branch_id = 1;
+                }
+                $branch = \common\models\Branch::findOne(intval($branch_id));
+>>>>>>> 08a1123 (empty)
                 $slider = $branch->getSliders()->andWhere(['is_main' => 1])->one();
 
                 if (isset($slider)) {
@@ -127,6 +136,7 @@ $this->title = "ООО Агропромсервис - официальный д�
                     <div class="main-slider-pagination">
                         <div class="main-slider-pagination__wrap">
                             <?php
+<<<<<<< HEAD
                             if (isset($slider)) {
                                 foreach ($slider as $key => $slide) {
                                     $active = $key === 0 ? "active" : "";
@@ -135,6 +145,16 @@ $this->title = "ООО Агропромсервис - официальный д�
                                           </div>";
                                 }
                             }
+=======
+                                if (isset($slider) && (count($slider->slides) > 1)) {
+                                    foreach ($slider->slides as $key => $slide) {
+                                        $active = $key === 0 ? 'active' : '';
+                                        echo "<div data-id=\"$key\" class=\"main-slider-pagination__el $active\">
+                                <div class=\"main-slider-pagination__el-inner\"></div>
+                            </div>";
+                                    }
+                                }
+>>>>>>> 08a1123 (empty)
                             ?>
                         </div>
                     </div>
