@@ -14,7 +14,7 @@ use yii\web\View;
 $this->title = \Yii::t('backend', 'Certificates');
 
 echo Html::beginTag('div', ['class' => 'mb-3']);
-echo Html::a(\Yii::t('backend', 'Create'), ['/certificate/create'], ['class' => 'btn btn-success']);
+echo Html::a(\Yii::t('backend', 'Create Certificate'), ['/certificate/create'], ['class' => 'btn btn-success']);
 echo Html::endTag('div');
 
 echo GridView::widget([

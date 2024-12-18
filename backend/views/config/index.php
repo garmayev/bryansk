@@ -9,7 +9,7 @@ use yii\grid\GridView;
  * @var ActiveDataProvider $dataProvider
  */
 
-$this->title = \Yii::t('app', 'Configuration');
+$this->title = \Yii::t('backend', 'Configuration');
 
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -36,6 +36,7 @@ echo GridView::widget([
         ],
         [
             'class' => 'yii\grid\ActionColumn',
+            'template' => '{view} {update}'
         ]
     ]
 ]);

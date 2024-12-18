@@ -28,6 +28,16 @@ class Material extends \yii\db\ActiveRecord
         ];
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'href' => \Yii::t('backend', 'Href'),
+            'name' => \Yii::t('backend', 'Name'),
+            'size' => \Yii::t('backend', 'Size'),
+            'format' => \Yii::t('backend', 'Format'),
+        ];
+    }
+
     public function upload()
     {
         if ($this->validate() && isset($this->file)) {

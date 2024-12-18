@@ -19,6 +19,17 @@ class ConfigController extends Controller
     public function actionUpdate($id)
     {
         $model = Config::findOne($id);
+
+        if (\Yii::$app->request->isPost) {
+            if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+                \Yii::$app->session->setFlash('success', \Yii::t('backend', 'Successfully saved'));
+                $this->redirect('index');
+            } else {
+                \Yii::$app->session->setFlash('success', \Yii::t('backend', 'Not save'));
+                \Yii::error($model->getErrorSummary(true));
+            }
+        }
+
         return $this->render('update', [
             'model' => $model
         ]);
