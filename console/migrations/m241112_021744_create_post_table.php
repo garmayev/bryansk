@@ -15,9 +15,10 @@ class m241112_021744_create_post_table extends Migration
         $this->createTable('{{%post}}', [
             'id' => $this->primaryKey(),
             'image' => $this->string(),
-            'title' => $this->text(),
+            'title' => $this->string(),
             'text' => 'LONGTEXT',
-            'created_at' => $this->integer()
+            'summary' => 'LONGTEXT',
+            'created_at' => $this->integer(),
         ]);
     }
 

@@ -58,6 +58,17 @@ class Element extends \yii\db\ActiveRecord
         ];
     }
 
+    private function findSubclass($className, $data)
+    {
+        $query = $className::find();
+        foreach ($data as $key => $item) {
+            if (!is_array($item) && $key !== 'actions') {
+                $query->andWhere([$key => $item]);
+            }
+        }
+        return $query->one();
+    }
+
     public function getSlides(): \yii\db\ActiveQuery
     {
         return $this->hasMany(Slide::class, ['id' => 'slide_id'])->viaTable('element_slide', ['element_id' => 'id']);
@@ -68,11 +79,15 @@ class Element extends \yii\db\ActiveRecord
         $this->save(false);
         foreach ($this->slides as $slide) {
             $this->unlink('slides', $slide, true);
-            $slide->delete();
         }
         foreach ($data as $item) {
-            $slide = new Slide($item);
-            $slide->save();
+            $slide = $this->findSubclass(Slide::class, $item);
+            if (empty($slide)) {
+                $slide = new Slide($item);
+                $slide->save();
+            } else {
+                $slide->load(["Slide" => $item]) && $slide->save();
+            }
             $this->link('slides', $slide);
         }
     }
@@ -86,13 +101,12 @@ class Element extends \yii\db\ActiveRecord
     {
         $this->save(false);
         if ($this->general_description) {
-            $description = $this->general_description;
-            $this->unlink('general_description', $description, true);
-            $description->delete();
+            $this->general_description->load(["Description" => $data]) && $this->general_description->save();
+        } else {
+            $description = new Description($data);
+            $description->save();
+            $this->link('general_description', $description);
         }
-        $description = new Description($data);
-        $description->save();
-        $this->link('general_description', $description);
     }
 
     public function getDescription_list(): \yii\db\ActiveQuery
@@ -104,13 +118,12 @@ class Element extends \yii\db\ActiveRecord
     {
         $this->save(false);
         if ($this->description_list) {
-            $list = $this->description_list;
-            $this->unlink('description_list', $this->description_list, true);
-            $list->delete();
+            $this->description_list->load(['DescriptionList' => $data]);
+        } else {
+            $descriptionList = new DescriptionList($data);
+            $descriptionList->save();
+            $this->link('description_list', $descriptionList);
         }
-        $descriptionList = new DescriptionList($data);
-        $descriptionList->save();
-        $this->link('description_list', $descriptionList);
     }
 
     public function getMaterials(): \yii\db\ActiveQuery
@@ -123,12 +136,16 @@ class Element extends \yii\db\ActiveRecord
         $this->save(false);
         foreach ($this->materials as $material) {
             $this->unlink('materials', $material, true);
-            $material->delete();
         }
         foreach ($data as $item) {
-            $material = new Material($item);
-            $material->save(false);
-            $this->link('materials', $material);
+            $material = $this->findSubclass(Material::class, $item);
+            if (empty($material)) {
+                $material = new Material($item);
+                $material->save(false);
+                $this->link('materials', $material);
+            } else {
+                $material->load(["Material" => $item]) && $material->save();
+            }
         }
     }
 
@@ -141,13 +158,12 @@ class Element extends \yii\db\ActiveRecord
     {
         $this->save(false);
         if ($this->tech_characteristics) {
-            $characteristics = $this->tech_characteristics;
-            $this->unlink('tech_characteristics', $characteristics, true);
-            $characteristics->delete();
+            $this->tech_characteristics->load(['Tech' => $data]) && $this->tech_characteristics->save();
+        } else {
+            $tech = new Tech($data);
+            $tech->save();
+            $this->link('tech_characteristics', $tech);
         }
-        $tech = new Tech($data);
-        $tech->save();
-        $this->link('tech_characteristics', $tech);
     }
 
     public function getReviews(): \yii\db\ActiveQuery
@@ -160,12 +176,14 @@ class Element extends \yii\db\ActiveRecord
         $this->save(false);
         foreach ($this->reviews as $review) {
             $this->unlink('reviews', $review, true);
-            $review->delete();
         }
         foreach ($data as $item) {
-            if (empty($review = Review::findOne($item["id"]))) {
+            $review = $this->findSubclass(Review::class, $item);
+            if (empty($review)) {
                 $review = new Review($item);
                 $review->save();
+            } else {
+                $review->load(["Review" => $item]) && $review->save();
             }
             $this->link('reviews', $review);
         }
@@ -180,13 +198,12 @@ class Element extends \yii\db\ActiveRecord
     {
         $this->save(false);
         if ($this->equipments) {
-            $equipments = $this->equipments;
-            $this->unlink('equipments', $equipments, true);
-            $equipments->delete();
+            $this->equipments->load(['Equipment' => $data]) && $this->equipments->save();
+        } else {
+            $eq = new Equipment($data);
+            $eq->save();
+            $this->link('equipments', $eq);
         }
-        $eq = new Equipment($data);
-        $eq->save();
-        $this->link('equipments', $eq);
     }
 
     public function getOptions(): \yii\db\ActiveQuery
@@ -198,13 +215,12 @@ class Element extends \yii\db\ActiveRecord
     {
         $this->save(false);
         if ($this->options) {
-            $options = $this->options;
-            $this->unlink('options', $this->options, true);
-            $options->delete();
+            $this->options->load($data) && $this->options->save();
+        } else {
+            $option = new Option($data);
+            $option->save();
+            $this->link('options', $option);
         }
-        $option = new Option($data);
-        $option->save();
-        $this->link('options', $option);
     }
 
     public function getGuarantee(): \yii\db\ActiveQuery
@@ -216,13 +232,12 @@ class Element extends \yii\db\ActiveRecord
     {
         $this->save(false);
         if ($this->guarantee) {
-            $guarantee = $this->guarantee;
-            $this->unlink('guarantee', $guarantee, true);
-            $guarantee->delete();
+            $this->guarantee->load(['Guarantee' => $data]) && $this->guarantee->save();
+        } else {
+            $guarantee = new Guarantee($data);
+            $guarantee->save();
+            $this->link('guarantee', $guarantee);
         }
-        $guarantee = new Guarantee($data);
-        $guarantee->save();
-        $this->link('guarantee', $guarantee);
     }
 
     public function getKey_features(): \yii\db\ActiveQuery
@@ -234,9 +249,9 @@ class Element extends \yii\db\ActiveRecord
     {
         $this->save(false);
         if ($this->key_features) {
-            $key_features = $this->key_features;
-            $this->unlink('key_features', $key_features, true);
-            $key_features->delete();
+            $key = $this->key_features;
+            $this->unlink('key_features', $key, true);
+            $key->delete();
         }
         $key = new FeatureKey($data);
         $key->save();
@@ -252,13 +267,13 @@ class Element extends \yii\db\ActiveRecord
     {
         $this->save(false);
         if ($this->task_list) {
-            $task_list = $this->task_list;
-            $this->unlink('task_list', $task_list, true);
-            $task_list->delete();
+            $this->task_list->load(["TaskList" => $data]);
+            $this->task_list->save();
+        } else {
+            $task = new TaskList($data);
+            $task->save();
+            $this->link('task_list', $task);
         }
-        $task = new TaskList($data);
-        $task->save();
-        $this->link('task_list', $task);
     }
 
     public function getVideos(): \yii\db\ActiveQuery
@@ -271,11 +286,15 @@ class Element extends \yii\db\ActiveRecord
         $this->save(false);
         foreach ($this->videos as $video) {
             $this->unlink('videos', $video, true);
-            $video->delete();
         }
         foreach ($data as $item) {
-            $video = new Video($item);
-            $video->save();
+            $video = $this->findSubclass(Video::class, $item);
+            if (empty($video)) {
+                $video = new Video($item);
+                $video->save();
+            } else {
+                $video->load(["Video" => $data]) && $video->save();
+            }
             $this->link('videos', $video);
         }
     }

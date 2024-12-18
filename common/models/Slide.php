@@ -57,12 +57,24 @@ class Slide extends \yii\db\ActiveRecord
         ];
     }
 
+    private function findSubclass($className, $data)
+    {
+        $query = $className::find();
+        foreach ($data as $key => $item) {
+            if (!is_array($item)) {
+                $query->andWhere([$key => $item]);
+            }
+        }
+        return $query->one();
+    }
+
     public function getImage()
     {
         return $this->image_id ? $this->hasOne(Image::class, ['id' => 'image_id']) : $this->image;
     }
 
-    public function setImage($data) {
+    public function setImage($data)
+    {
         if (is_string($data)) {
             $this->image = $data;
         }
@@ -83,14 +95,13 @@ class Slide extends \yii\db\ActiveRecord
 
     public function setSubtitle($data)
     {
-        $sub = $this->subtitle;
-        if ($sub) {
-            $this->unlink('subtitle', $sub);
-            $sub->delete();
+        if ($this->subtitle) {
+            $this->subtitle->load($data) && $this->subtitle->save();
+        } else {
+            $link = new Link($data);
+            $link->save();
+            $this->link('subtitle', $link);
         }
-        $link = new Link($data);
-        $link->save();
-        $this->link('subtitle', $link);
     }
 
     public function getElement()
@@ -106,16 +117,18 @@ class Slide extends \yii\db\ActiveRecord
     public function setActions($data)
     {
         $this->save(false);
-        if ($this->actions) {
-            foreach ($this->actions as $action) {
-                $this->unlink('actions', $action, true);
-                $action->delete();
-            }
+        foreach ($this->actions as $action) {
+            $this->unlink('actions', $action);
         }
         if (isset($data['items'])) {
             foreach ($data["items"] as $item) {
-                $link = new Link($item);
-                $link->save();
+                $link = $this->findSubclass(Link::class, $item);
+                if (empty($link)) {
+                    $link = new Link($item);
+                    $link->save();
+                } else {
+                    $link->load(['Link' => $item]) && $link->save();
+                }
                 $this->link('actions', $link);
             }
         }
@@ -130,8 +143,13 @@ class Slide extends \yii\db\ActiveRecord
     {
         $this->save(false);
         foreach ($data['items'] as $item) {
-            $factor = new Factor($item);
-            $factor->save();
+            $factor = $this->findSubclass(Factor::class, $item);
+            if (empty($factor)) {
+                $factor = new Factor($item);
+                $factor->save();
+            } else {
+                $factor->load(['Factor' => $item]) && $factor->save();
+            }
             $this->link('factor_list', $factor);
         }
     }

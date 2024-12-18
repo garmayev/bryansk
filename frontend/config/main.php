@@ -10,9 +10,17 @@ return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language' => 'ru',
+    'language' => 'ru-RU',
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'i18n' => [
+            'translations' => [
+                'frontend*' => [
+                    'class' => \yii\i18n\PhpMessageSource::class,
+                    'basePath' => '@common/messages',
+                ]
+            ]
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
             'baseUrl' => '',

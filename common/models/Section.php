@@ -36,6 +36,15 @@ class Section extends \yii\db\ActiveRecord
         ];
     }
 
+    private function findVideo($data)
+    {
+        $query = Video::find();
+        foreach ($data as $key => $item) {
+            $query->andWhere([$key => $item]);
+        }
+        return $query->one();
+    }
+
     public function getVideos(): \yii\db\ActiveQuery
     {
         return $this->hasMany(Video::class, ['id' => 'video_id'])->viaTable('section_video', ['section_id' => 'id']);
@@ -46,11 +55,13 @@ class Section extends \yii\db\ActiveRecord
         $this->save(false);
         foreach ($this->videos as $video) {
             $this->unlink('videos', $video, true);
-            $video->delete();
         }
         foreach ($data as $item) {
-            $video = new Video($item);
-            $video->save();
+            $video = $this->findVideo($item);
+            if (is_null($video)) {
+                $video = new Video($item);
+                $video->save();
+            }
             $this->link('videos', $video);
         }
     }

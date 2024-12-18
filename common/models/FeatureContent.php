@@ -30,7 +30,6 @@ class FeatureContent extends \yii\db\ActiveRecord
         if ($this->image) {
             $image = $this->image;
             $this->unlink('image', $image);
-            $image->delete();
         }
         $image = new Image($data);
         $image->save();

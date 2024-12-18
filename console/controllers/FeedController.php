@@ -26,6 +26,9 @@ class FeedController extends \yii\console\Controller
             if ($section->save()) {
                 echo "Section #{$section->id} is saved\n";
             }
+            echo "<br/>";
+            ob_flush();
+            flush();
         }
     }
 
@@ -50,39 +53,29 @@ class FeedController extends \yii\console\Controller
                     echo $error;
                 }
             }
+            echo "<br/>";
+            ob_flush();
+            flush();
         }
     }
 
-    public function actionImportSlide($raw = null)
+    public function actionImport($target = null)
     {
+        @ob_end_clean();
+        ini_set('output_buffering', 0);
+
+        header('Content-Type: text/event-stream');
+        header("Cache-Control: no-cache, must-revalidate");
+        header("X-Accel-Buffering: no");
+        \Yii::$app->response->stream = true;
         $data = json_decode(file_get_contents("https://rostselmash.com/feed/for-dealers/file.json"), true);
-        if (is_null($raw)) {
-            $raw = json_decode(file_get_contents("https://rostselmash.com/feed/for-dealers/file.json"), true);
-            $data = $raw["catalog"]["elements"];
-        } else {
-            $data = $raw["elements"];
-        }
-        foreach ($data["catalog"]["elements"] as $item) {
-            $element = Element::findOne($item["id"]);
-            if (!empty($element)) {
-                foreach ($item["slides"] as $slideData) {
-                    $slide = new Slide($slideData);
-                    if ($slide->save()) {
-                        $element->link('slides', $slide);
-                        echo "Slide #{$slide->id} linking to element #{$element->id}\n";
-                    } else {
-                        echo "Slide is not saved\n";
-                    }
-                }
-            } else {
-                echo "Element is missing!\n";
+        if ($target === null) {
+            $targets = ['catalog', 'electronic-systems'];
+            foreach ($targets as $target) {
+                $this->actionImportSection($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
+                $this->actionImportElement($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
             }
         }
-    }
-
-    public function actionImport($target)
-    {
-        $data = json_decode(file_get_contents("https://rostselmash.com/feed/for-dealers/file.json"), true);
         if (isset($data[$target])) {
             $this->actionImportSection($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
             $this->actionImportElement($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
@@ -108,60 +101,6 @@ class FeedController extends \yii\console\Controller
         return $data;
     }
 
-    private function checkPerms($filename)
-    {
-        $perms = fileperms($filename);
-
-        switch ($perms & 0xF000) {
-            case 0xC000: // сокет
-                $info = 's';
-                break;
-            case 0xA000: // символическая ссылка
-                $info = 'l';
-                break;
-            case 0x8000: // обычный
-                $info = 'r';
-                break;
-            case 0x6000: // файл блочного устройства
-                $info = 'b';
-                break;
-            case 0x4000: // каталог
-                $info = 'd';
-                break;
-            case 0x2000: // файл символьного устройства
-                $info = 'c';
-                break;
-            case 0x1000: // FIFO канал
-                $info = 'p';
-                break;
-            default: // неизвестный
-                $info = 'u';
-        }
-
-        // Владелец
-        $info .= (($perms & 0x0100) ? 'r' : '-');
-        $info .= (($perms & 0x0080) ? 'w' : '-');
-        $info .= (($perms & 0x0040) ?
-                    (($perms & 0x0800) ? 's' : 'x' ) :
-                    (($perms & 0x0800) ? 'S' : '-'));
-
-        // Группа
-        $info .= (($perms & 0x0020) ? 'r' : '-');
-        $info .= (($perms & 0x0010) ? 'w' : '-');
-        $info .= (($perms & 0x0008) ?
-                    (($perms & 0x0400) ? 's' : 'x' ) :
-                    (($perms & 0x0400) ? 'S' : '-'));
-
-        // Мир
-        $info .= (($perms & 0x0004) ? 'r' : '-');
-        $info .= (($perms & 0x0002) ? 'w' : '-');
-        $info .= (($perms & 0x0001) ?
-                    (($perms & 0x0200) ? 't' : 'x' ) :
-                    (($perms & 0x0200) ? 'T' : '-'));
-
-        echo $info;
-    }
-
     public function actionUploadImages()
     {
         foreach (\common\models\Image::find()->all() as $image) {
@@ -177,7 +116,7 @@ class FeedController extends \yii\console\Controller
                 $data = $this->upload($image->src);
                 fputs($file, $data);
                 fclose($file);
-                
+
                 // $this->checkPerms($destination);
 
                 if (filesize($destination)) {
@@ -192,10 +131,6 @@ class FeedController extends \yii\console\Controller
                 }
             }
         }
-    }
-
-    public function actionUploadSlides()
-    {
         foreach (\common\models\Slide::find()->all() as $slide) {
             preg_match("/rostselmash/", $slide->image, $matches);
             if ( count($matches) ) {
@@ -209,7 +144,7 @@ class FeedController extends \yii\console\Controller
                 fputs($file, $this->upload($slide->image));
                 fclose($file);
 
-                if (filesize($destination) > 0) {
+                if (filesize($destination)) {
                     $slide->image = "/images/$fileName";
                     $slide->save();
 

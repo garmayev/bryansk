@@ -77,7 +77,6 @@ class Post extends ActiveRecord
                 return false;
             }
         }
-        \Yii::error('File basename is missing');
         return true;
     }
 }

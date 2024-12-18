@@ -1,18 +1,22 @@
+<?php
+
+use common\models\Config;
+
+$logoWhite = Config::find()->where(['title' => 'logo_white'])->one();
+$logoRed = Config::find()->where(['title' => 'logo_red'])->one();
+?>
 <div class="header-overlay"></div>
 <header class="header js-header is-white header--has-bottom" data-scroll-lock-fill-gap="">
     <style>
         .logo-white a img:first-child, .logo-red a img:first-child {
             width: 200px;
         }
-
         .r-logo {
             display: none;
         }
-
         .is-menu-open .r-logo {
             display: block;
         }
-
         .is-menu-open .w-logo {
             display: none;
         }
@@ -93,12 +97,12 @@
             <a class="header__logo">
                 <span class="logo-white">
                     <div class="n-logo-t">
-                        <a href="/"><img src="/images/logo.png" alt=""/></a>
+                        <a href="/"><img src="<?= $logoWhite->value ?>" alt=""/></a>
                     </div>
                 </span>
                 <span class="logo-red">
                     <div class="n-logo-t">
-                        <a href="/"><img src="/images/logo.png" alt=""/></a>
+                        <a href="/"><img src="<?= $logoRed->value ?>" alt=""/></a>
                     </div>
                 </span>
             </a>
@@ -138,7 +142,6 @@
                                 </svg>
                             </i>
                         </a>
-                    </i>
                     </li>
                 </ul>
                 <div class="header-nav__search-box" data-search-box="https://rostselmash.com/search/serch-ajax.php">

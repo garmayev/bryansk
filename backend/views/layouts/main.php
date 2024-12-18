@@ -40,10 +40,13 @@ AppAsset::register($this);
         ['label' => \Yii::t('backend', 'Sliders'), 'url' => ['/slider/index']],
         ['label' => \Yii::t('backend', 'Events'), 'url' => ['/event/index']],
         ['label' => \Yii::t('backend', 'Branches'), 'url' => ['/branch/index']],
+        ['label' => \Yii::t('backend', 'Certificates'), 'url' => ['/certificate/index']],
+        ['label' => \Yii::t('backend', 'Feed'), 'url' => ['/feed/index']],
+        ['label' => \Yii::t('backend', 'Configuration'), 'url' => ['/config/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => \Yii::t('backend', 'Login'), 'url' => ['/site/login']];
-    }     
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
         'items' => $menuItems,

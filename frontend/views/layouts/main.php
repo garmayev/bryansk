@@ -5,6 +5,7 @@
  * @var $content string
  */
 
+use common\models\Config;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -29,8 +30,12 @@ if ( !\Yii::$app->session->has('branch') ) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
     <meta property="og:title" content="Главная"/>
-    <meta property="og:image" content="https://oktober-rsm.ru/images/logo.png"/>
-    <meta property="og:image:secure_url" content="https://oktober-rsm.ru/images/logo.png"/>
+    <?php
+        $logoWhite = Config::find()->where(['title' => 'logo_white'])->one();
+        $logoRed = Config::find()->where(['title' => 'logo_red'])->one();
+    ?>
+    <meta property="og:image" content="https://oktober-rsm.ru<?= $logoWhite->value ?>"/>
+    <meta property="og:image:secure_url" content="https://oktober-rsm.ru<?= $logoRed->value ?>"/>
     <meta property="og:image:type" content="image/jpeg"/>
     <meta property="og:image:width" content="752"/>
     <meta property="og:image:height" content="395"/>
@@ -2391,7 +2396,7 @@ $this->endBody();
                                                             'Внести предложение или оставить отзыв' => 'Внести предложение или оставить отзыв',
                                                             'Прочее' => 'Прочее',
                                                         ], [
-                                                            'class' => 'input input--default', 
+                                                            'class' => 'input input--default',
                                                             'placeholder' => 'Выберите тему сообщения',
                                                             'data' => [
                                                                 'select' => '',

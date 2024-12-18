@@ -59,12 +59,16 @@ $this->title = "АО Октябрьское - официальный дилер 
                 <div class="main-slider__slides-overlay"></div>
                 <?php
                 $branch = \common\models\Branch::findOne(\Yii::$app->session->get('branch'));
+                if (empty($branch)) {
+                    $branch = \common\models\Branch::findOne(1);
+                }
                 $slider = $branch->getSliders()->andWhere(['is_main' => 1])->one();
 
                 if (isset($slider)) {
                     foreach ($slider->slides as $key => $slide) {
+                        $dataKey = $slide->element ? $slide->element->id : $slide->section->id;
                         $active = ($key === 0) ? 'active' : '';
-                        echo "<div data-id='$key' data-src='$slide->image' data-key='{$slide->element->id}' class='main-slider-slide $active has-overlay' title='$slide->title' alt='$slide->title'>
+                        echo "<div data-id='$key' data-src='$slide->image' data-key='{$dataKey}' class='main-slider-slide $active has-overlay' title='$slide->title' alt='$slide->title'>
                     <div class='main-slider-slide__content'>
                         <div class='main-slider-slide__main'>
                             <div class='main-slider-slide__title h2'>$slide->title</div>
@@ -122,15 +126,16 @@ $this->title = "АО Октябрьское - официальный дилер 
                 <div class="main-slider-info">
                     <div class="main-slider-pagination">
                         <div class="main-slider-pagination__wrap">
-                            <div data-id="0" class="main-slider-pagination__el active">
-                                <div class="main-slider-pagination__el-inner"></div>
-                            </div>
-                            <div data-id="1" class="main-slider-pagination__el">
-                                <div class="main-slider-pagination__el-inner"></div>
-                            </div>
-                            <div data-id="2" class="main-slider-pagination__el">
-                                <div class="main-slider-pagination__el-inner"></div>
-                            </div>
+                            <?php
+                            if (isset($slider)) {
+                                foreach ($slider as $key => $slide) {
+                                    $active = $key === 0 ? "active" : "";
+                                    echo "<div data-id=\"$key\" class=\"main-slider-pagination__el $active\">
+                                            <div class=\"main-slider-pagination__el-inner\"></div>
+                                          </div>";
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
 
@@ -254,25 +259,24 @@ $this->title = "АО Октябрьское - официальный дилер 
                              style="opacity: 1; transform: translate3d(0px, 0px, 0px);">
 
                             <div class="block-slider__slide" id="bx_1373509569_150308">
-                                <img class="block-slider__img" alt="" src="/images/336.jpg">
+                                <?php
+                                $aboutImage = \common\models\Config::findOne(['title' => 'main_page_image']);
+                                $aboutText = \common\models\Config::findOne(['title' => 'main_page_text']);
+                                $year = \common\models\Config::findOne(['title' => 'year']);
+                                ?>
+                                <img class="block-slider__img" alt="" src="<?= $aboutImage->value ?>">
                                 <div class="block-slider__slide-content">
                                     <div class="block-slider__slide-content-wrap">
                                         <div class="block-slider__slide-content-head">
                                             <h4 class="block-slider__slide-content-title">Официальный дилер
                                                 Ростсельмаш</h4>
                                             <div class="user-text text">
-                                                <p>20 лет успешной работы</p>
+                                                <p><?= \Yii::t('frontend', '{n, plural, =0{are no years} =1{is one years} one{are #year} few{are # years} other{are # years}} of successfully work', ['n' => date('Y') - intval(\common\models\Config::findOne(['title' => 'year'])->value)]) ?></p>
                                             </div>
                                         </div>
                                         <div class="block-slider__slide-content-text animate" data-animate="">
                                             <div class="user-text">
-                                                <p>С 2004 года АО «Октябрьское» является официальным дилером Ростсельмаш
-                                                    в Тамбовской и Липецкой областях по поставкам и послепродажному
-                                                    обслуживанию крупногабаритной сельскохозяйственной техники,
-                                                    прицепному и самоходному оборудованию для всех видов полевых
-                                                    работ.</p>
-                                                <p>Сейчас это комплексное обслуживание аграриев, так называемый принцип
-                                                    одного окна - «ВСЕ ДЛЯ РАБОТЫ В ПОЛЕ»!</p>
+                                                <?= $aboutText->value ?>
                                                 <div class="block-slider__slide-content-link">
                                                     <a href="/site/about/"
                                                        class="text-link text-default text-link--underline">Подробнее</a>

@@ -30,7 +30,6 @@ class TaskList extends \yii\db\ActiveRecord
         $this->save(false);
         foreach ($this->list as $list) {
             $this->unlink('list', $list, true);
-            $list->delete();
         }
         foreach ($data as $item) {
             $listItem = new ListItem(array_merge($item, ['type' => ListItem::TYPE_TASK]));
