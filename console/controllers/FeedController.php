@@ -111,7 +111,7 @@ class FeedController extends \yii\console\Controller
 
                 $destination = \Yii::getAlias("@frontend")."/web/images/$fileName";
                 touch($destination);
-                chmod($destination, 0777);
+//                chmod($destination, 0777);
                 $file = fopen($destination, "w");
                 $data = $this->upload($image->src);
                 fputs($file, $data);
