@@ -20,4 +20,12 @@ class Image extends \yii\db\ActiveRecord
             [['class', 'src', 'alt'], 'string']
         ];
     }
+
+    public function beforeDelete()
+    {
+        if (preg_match('/rostselmash/', $this->src) === 0) {
+            unlink($this->src);
+        }
+        return parent::beforeDelete();
+    }
 }

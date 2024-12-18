@@ -54,6 +54,7 @@ class RtmAsset extends \yii\web\AssetBundle
         "/local/templates/main/template_styles.css",
         "/local/templates/main/template_styles.css",
         "/css/custom.css",
+        "/redizine/style.css",
         // "/css/user-main.css",
     ];
 

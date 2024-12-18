@@ -79,15 +79,11 @@ class Element extends \yii\db\ActiveRecord
         $this->save(false);
         foreach ($this->slides as $slide) {
             $this->unlink('slides', $slide, true);
+            $slide->delete();
         }
         foreach ($data as $item) {
-            $slide = $this->findSubclass(Slide::class, $item);
-            if (empty($slide)) {
-                $slide = new Slide($item);
-                $slide->save();
-            } else {
-                $slide->load(["Slide" => $item]) && $slide->save();
-            }
+            $slide = new Slide($item);
+            $slide->save();
             $this->link('slides', $slide);
         }
     }

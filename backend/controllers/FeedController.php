@@ -12,6 +12,12 @@ use yii\web\Response;
 
 class FeedController extends Controller
 {
+    public function beforeAction($action)
+    {
+        $this->enableCsrfValidation = false;
+        return parent::beforeAction($action);
+    }
+
     private function import($className, $data, $type)
     {
         $element = $className::findOne($data["id"]);
@@ -21,11 +27,12 @@ class FeedController extends Controller
             $class = explode('\\', $className::classname());
             $element->load([end($class) => array_merge($data, ['type' => $type])]);
         }
-        if ($element->save()) {
-            return "<p class='text-success'>{$className::classname()} ID: {$element->id} is loaded</p>";
-        } else {
-            return "<p class='text-danger-emphasis'>{$className::classname()} ID: {$element->id} is not loaded</p>";
-        }
+        return $element->save();
+//        if ($element->save()) {
+//            return "<p class='text-success'>{$className::classname()} ID: {$element->id} is loaded</p>";
+//        } else {
+//            return "<p class='text-danger-emphasis'>{$className::classname()} ID: {$element->id} is not loaded</p>";
+//        }
     }
 
     public function actionImportSection($raw = null, $type = 1)
@@ -58,26 +65,39 @@ class FeedController extends Controller
         return $result;
     }
 
+    public function actionImportEntry()
+    {
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $data = json_decode(file_get_contents("php://input"), true);
+        return ["ok" => $this->import(
+            $data['type'] === 'elements' ? Element::class : Section::class,
+            $data['data'],
+            $data['target'] === 'catalog' ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM
+        ), "data" => $data['data']];
+    }
+
     public function actionImport($target = null)
     {
-        $data = json_decode(file_get_contents("https://rostselmash.com/feed/for-dealers/file.json"), true);
+        $data = file_get_contents("https://rostselmash.com/feed/for-dealers/file.json");
+        // $data
         $result = "";
-        if ($target === null) {
-            $targets = ['catalog', 'electronic-systems'];
-            foreach ($targets as $target) {
-                $result .= "<p class='text-info'>import sections from $target</p>";
-                $result .= $this->actionImportSection($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
-                $result .= "<p class='text-info'>import elements from $target</p>";
-                $result .= $this->actionImportElement($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
-            }
-        } else {
-            $result .= "<p class='text-info'>import sections from $target</p>";
-            $result .= $this->actionImportSection($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
-            $result .= "<p class='text-info'>import elements from $target</p>";
-            $result .= $this->actionImportElement($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
-        }
+//        if ($target === null) {
+//            $targets = ['catalog', 'electronic-systems'];
+//            foreach ($targets as $target) {
+//                $result .= "<p class='text-info'>import sections from $target</p>";
+//                $result .= $this->actionImportSection($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
+//                $result .= "<p class='text-info'>import elements from $target</p>";
+//                $result .= $this->actionImportElement($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
+//            }
+//        } else {
+//            $result .= "<p class='text-info'>import sections from $target</p>";
+//            $result .= $this->actionImportSection($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
+//            $result .= "<p class='text-info'>import elements from $target</p>";
+//            $result .= $this->actionImportElement($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
+//        }
         return $this->render('import', [
             'result' => $result,
+            'feed' => $data
         ]);
     }
 

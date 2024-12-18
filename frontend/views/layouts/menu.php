@@ -4,8 +4,8 @@ use common\models\Config;
 
 $logoWhite = Config::find()->where(['title' => 'logo_white'])->one();
 $logoRed = Config::find()->where(['title' => 'logo_red'])->one();
+
 ?>
-<div class="header-overlay"></div>
 <header class="header js-header is-white header--has-bottom" data-scroll-lock-fill-gap="">
     <style>
         .logo-white a img:first-child, .logo-red a img:first-child {
@@ -255,7 +255,7 @@ $logoRed = Config::find()->where(['title' => 'logo_red'])->one();
             </ul>
             <ul class="header-nav__submenu header-nav__submenu--level-1 is-open" data-id="98">
                 <li class="header-nav__submenu-item header-nav__submenu-item--level-1 text-default">
-                    <a href="https://rostselmash.com/spare-parts/spares/" class="header-nav__submenu-link header-nav__submenu-link--level-1">
+                    <a href="/parts/spares/" class="header-nav__submenu-link header-nav__submenu-link--level-1">
                         Оригинальные запчасти и сервис
                     </a>
                 </li>
