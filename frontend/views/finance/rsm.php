@@ -7,6 +7,8 @@ use yii\web\View;
  */
 
 echo $this->render('_menu');
+
+$this->title = "Программа лизинга Ростсельмаш Финанс";
 $this->registerJsFile("/redizine/jquery.sticky-kit.js", ['position' => View::POS_LOAD]);
 $this->registerJsFile("/local/components/uplab.production/region.selector/templates/.default/script.js", ['position' => View::POS_LOAD]);
 $this->registerJs(<<<JS
@@ -352,6 +354,13 @@ JS);
                             <span class="btn__text ">Оставить заявку</span>
                         </a>
                     </div>
+                </div>
+                <div class="insurance-description__col">
+
+                    <div class="insurance-description__img">
+                        <img src="/images/bg-full.png" alt="">
+                    </div>
+
                 </div>
             </div>
 
