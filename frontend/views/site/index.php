@@ -315,7 +315,7 @@ $this->title = "ООО Агропромсервис - официальный д�
                             foreach ($b as $region => $c) {
                                 $cleanPhone = preg_replace('/[\ \(\)\+\-]/', '', $branch->phone);
 
-                                echo "<p class=\"h3 my-16\">{$branch->region}</p>";
+                                echo "<p class=\"h3 my-16\">{$region}</p>";
                                 foreach ($c as $branch) {
                                 echo "<div class=\"map-search-box__list-item dealer-map-list-item-js\" style=\"margin: 2px 0;\">
                                 <div class=\"map-search-box__head\">
