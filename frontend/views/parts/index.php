@@ -28,7 +28,7 @@ $this->title = "Запчасти и сервис";
 		<div class="tech-cards-list__row">
 		    <div class="tech-cards-list__col">
 			<div class="card" itemscope="" itemtype="http://schema.org/ImageObject">
-			    <a href="https://rostselmash.com/spare-parts/spares/" class="card__inner">
+			    <a href="/parts/spares/" class="card__inner">
 				<div class="card__img">
 				    <img class="image is-lazy isItemProp is-loaded" src="https://rostselmash.com/upload/medialibrary/d89/d890e65ed9d54e777b59e3c4c396e53e.jpg" data-src="https://rostselmash.com/upload/medialibrary/d89/d890e65ed9d54e777b59e3c4c396e53e.jpg" itemprop="contentUrl" data-srcset="https://rostselmash.com/upload/medialibrary/d89/d890e65ed9d54e777b59e3c4c396e53e.jpg" alt="image" srcset="https://rostselmash.com/upload/medialibrary/d89/d890e65ed9d54e777b59e3c4c396e53e.jpg" data-ll-status="loaded">
 				</div>
