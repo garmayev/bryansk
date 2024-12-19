@@ -11,9 +11,9 @@ $this->title = "Оригинальные запчасти и сервис";
 $this->registerCssFile("/redizine/parts/custom.css");
 $this->registerCssFile("/redizine/parts/style.css");
 $this->registerCssFile("/redizine/parts/components.css");
-$this->registerJsFile("/redizine/spares-custom.js");
+
 $this->registerJsFile("/redizine/spares-custom2.js");
-$this->registerJsFile("/redizine/parts/custom.js");
+
 $this->registerCss(<<<CSS
 .video_banner video {
     height: 140%;
@@ -23,19 +23,6 @@ $this->registerCss(<<<CSS
     top: 0;
 }
 CSS);
-$this->registerJs(<<<JS
-    $('.tabs-list__el').on('click', function (e) {
-        e.preventDefault();
-		let hash = $(this).attr('data-hash');
-		let parent = $(this).parents('.tabs');
-		parent.find('.tabs-list__el').removeClass('active')
-		$(this).addClass('active');
-		parent.find('.tabs-content__el').hide();
-		parent.find('[data-hash=' + hash + ']').show();
-        console.log(hash)
-    })
-    const swiper = new Swiper('.equipment__content--small.equipment__content.animate', {});
-JS);
 ?>
 <div class="hero-main video_banner">
     <div class="hero-main__wrap">
@@ -661,7 +648,7 @@ JS);
                                     <div class="equipment__slide swiper-slide swiper-slide-active" style="width: 396px;">
                                         <div class="equipment__inner">
                                             <div class="card">
-                                                <a target="_blank" href="/electronic-systems/agrotronik-i-agronomicheskie-servisy/" class="card__inner">
+                                                <a target="_blank" href="/systems/agrotronik-i-agronomicheskie-servisy" class="card__inner">
                                                     <div class="card__img">
                                                         <img class="image" src="/upload/parts/9zxqha81csceaapdf00z55drdtdj6ggc.jpg" alt="image">
                                                     </div>
@@ -681,7 +668,7 @@ JS);
                                     <div class="equipment__slide swiper-slide swiper-slide-next" style="width: 396px;">
                                         <div class="equipment__inner">
                                             <div class="card">
-                                                <a target="_blank" href="/electronic-systems/sistemy-identifikatsii-i-kontrolya/" class="card__inner">
+                                                <a target="_blank" href="/systems/sistemy-identifikatsii-i-kontrolya" class="card__inner">
                                                     <div class="card__img">
                                                         <img class="image" src="/upload/parts/tyayau9b1xicbu3m4e2sfziow4fjgz1d.jpg" alt="image">
                                                     </div>
@@ -704,7 +691,7 @@ JS);
                                     <div class="equipment__slide swiper-slide" style="width: 396px;">
                                         <div class="equipment__inner">
                                             <div class="card">
-                                                <a target="_blank" href="/electronic-systems/sistemy-avtoupravleniya-mashin/" class="card__inner">
+                                                <a target="_blank" href="/systems/sistemy-avtoupravleniya-mashin" class="card__inner">
                                                     <div class="card__img">
                                                         <img class="image" src="/upload/parts/pubht0rpv8auef53qtqcte604u11ytdj.jpg" alt="image">
                                                     </div>
@@ -727,7 +714,7 @@ JS);
                                     <div class="equipment__slide swiper-slide" style="width: 396px;">
                                         <div class="equipment__inner">
                                             <div class="card">
-                                                <a target="_blank" href="/electronic-systems/sistemy-povysheniya-effektivnosti-zernouborochnykh-kombaynov/" class="card__inner">
+                                                <a target="_blank" href="/systems/sistemy-povysheniya-effektivnosti-zernouborochnykh-kombaynov" class="card__inner">
                                                     <div class="card__img">
                                                         <img class="image" src="/upload/parts/3ewp9p9jc0uqrvx7q2tk8w1nvkha006t.jpg" alt="image">
                                                     </div>
@@ -750,7 +737,7 @@ JS);
                                     <div class="equipment__slide swiper-slide" style="width: 396px;">
                                         <div class="equipment__inner">
                                             <div class="card">
-                                                <a target="_blank" href="/electronic-systems/povysheniya-effektivnosti-kormouborochnykh-kombaynov/" class="card__inner">
+                                                <a target="_blank" href="/systems/povysheniya-effektivnosti-kormouborochnykh-kombaynov" class="card__inner">
                                                     <div class="card__img">
                                                         <img class="image" src="/upload/parts/s38xglhm226rlnf1jqi0tkviau26qavo.jpg" alt="image">
                                                     </div>
@@ -773,7 +760,7 @@ JS);
                                     <div class="equipment__slide swiper-slide" style="width: 396px;">
                                         <div class="equipment__inner">
                                             <div class="card">
-                                                <a target="_blank" href="/electronic-systems/sistemy-povysheniya-effektivnosti-traktorov/" class="card__inner">
+                                                <a target="_blank" href="/systems/sistemy-povysheniya-effektivnosti-traktorov" class="card__inner">
                                                     <div class="card__img">
                                                         <img class="image" src="/upload/parts/xfmmq761ojzvzp5qkiet7d1uw2jnqodz.JPG" alt="image">
                                                     </div>
@@ -796,7 +783,7 @@ JS);
                                     <div class="equipment__slide swiper-slide" style="width: 396px;">
                                         <div class="equipment__inner">
                                             <div class="card">
-                                                <a target="_blank" href="/electronic-systems/sistemy-avtoupravleniya-mashin/agrotronik-pilot-1-0/" class="card__inner">
+                                                <a target="_blank" href="/systems/sistemy-avtoupravleniya-mashin/agrotronik-pilot-1-0" class="card__inner">
                                                     <div class="card__img">
                                                         <img class="image" src="/upload/parts/ngogsjeuuieczxj27tvsf7dn56by6blq.jpg" alt="image">
                                                     </div>
@@ -819,7 +806,7 @@ JS);
                                     <div class="equipment__slide swiper-slide" style="width: 396px;">
                                         <div class="equipment__inner">
                                             <div class="card">
-                                                <a target="_blank" href="/electronic-systems/agrotronik-i-agronomicheskie-servisy/rsm-karta-urozhaynosti-zuk/" class="card__inner">
+                                                <a target="_blank" href="/systems/agrotronik-i-agronomicheskie-servisy/rsm-karta-urozhaynosti-zuk" class="card__inner">
                                                     <div class="card__img">
                                                         <img class="image" src="/upload/parts/6xi09brkk9rd179op6p2hxudtza02r9v.jpg" alt="image">
                                                     </div>

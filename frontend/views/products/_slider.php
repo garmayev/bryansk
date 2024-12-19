@@ -86,8 +86,9 @@ foreach ($slides as $index => $slide) {
             <div class="main-slider-pagination__wrap">
                 <?php
                 foreach ($slides as $index => $slide) {
+                    $active = $index === 0 ? "active" : "";
                     echo "
-                    <div data-id='{$index}' class='main-slider-pagination__el active'>
+                    <div data-id='{$index}' class='main-slider-pagination__el $active'>
                         <div class='main-slider-pagination__el-inner'></div>
                     </div>
                     ";

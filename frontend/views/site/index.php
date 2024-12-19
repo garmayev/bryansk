@@ -128,7 +128,7 @@ $this->title = "ООО Агропромсервис - официальный д�
                         <div class="main-slider-pagination__wrap">
                             <?php
                             if (isset($slider)) {
-                                foreach ($slider as $key => $slide) {
+                                foreach ($slider->slides as $key => $slide) {
                                     $active = $key === 0 ? "active" : "";
                                     echo "<div data-id=\"$key\" class=\"main-slider-pagination__el $active\">
                                             <div class=\"main-slider-pagination__el-inner\"></div>

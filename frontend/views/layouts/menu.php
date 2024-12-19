@@ -32,6 +32,7 @@ $this->registerJs(<<<JS
     })
 JS);
 ?>
+<div class="header-overlay"></div>
 <style>
     .logo-white a img:first-child, .logo-red a img:first-child {
         width: 200px;
@@ -372,7 +373,7 @@ JS);
             foreach ($elements as $element) {
                 $subLevel = $element['level'] + 1;
                 echo Html::beginTag('ul', [
-                    'class' => "header-nav__submenu header-nav__submenu--level-{$subLevel} text-lead",
+                    'class' => "header-nav__submenu header-nav__submenu--level-{$subLevel}",
                     'data' => [
                         'id' => $element['key'],
                         'animate' => '',
@@ -405,7 +406,7 @@ JS);
 
 </header>
 <script>
-    let over;
+/*    let over;
     let target;
 
     function is_cursor_on_elem(ev, elem) {
@@ -448,7 +449,7 @@ JS);
             if (!over) {
                 const c = document.querySelector(".header-nav__dropdown")
                 clearTimeout(timer)
-                c.classList.remove("is-open")
+                c.classList.remove("is-open", "animate")
             }
         })
     })
@@ -466,7 +467,9 @@ JS);
                 const b = document.querySelector(`.header-nav__submenu.header-nav__submenu--level-${l}[data-id="${id}"]`);
                 if (b) {
                     if (!b.classList.contains("is-open")) {
-                        b.classList.add('is-open')
+                        b.classList.add('is-open');
+                        console.log(b);
+//                        b.classList.add('text-lead')
                     }
                     activeItem.classList.add("is-active")
                 }
@@ -479,9 +482,9 @@ JS);
     })
     document.querySelector(".header-nav__dropdown").addEventListener("mouseleave", (e) => {
         const current = e.currentTarget;
-        current && current.classList.remove("is-open", "animate");
+        current && current.classList.remove("is-open");
         over = false;
-    })
+    }) */
 </script>
 <div class="menu">
     <div class="menu__scrollable" data-scroll-lock-scrollable="">

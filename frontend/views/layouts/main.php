@@ -58,11 +58,11 @@ $branch = \common\models\Branch::findOne(\Yii::$app->session->get('branch'));
     <script>
         const scriptList = [
             "/js/script.js",
-//            "/js/jquery-2.2.4.min.js", */
-            "/bitrix/js/main/core/core.min.js",
-            "/bitrix/js/pull/protobuf/protobuf.min.js",
+//            "/js/jquery-2.2.4.min.js",
+//            "/bitrix/js/main/core/core.min.js",
+//            "/bitrix/js/pull/protobuf/protobuf.min.js",
 //            "/bitrix/js/pull/protobuf/model.min.js",
-            "/bitrix/js/rest/client/rest.client.min.js",
+//            "/bitrix/js/rest/client/rest.client.min.js",
 //            "/bitrix/js/pull/client/pull.client.min.js",
 //            "/bitrix/js/main/pageobject/pageobject.min.js",
 //            '/bitrix/js/main/core/core_window.min.js',
@@ -70,19 +70,20 @@ $branch = \common\models\Branch::findOne(\Yii::$app->session->get('branch'));
             '/dist/js/stycky-kit.js',
             '/local/templates/.default/custom.js?t=1',
             '/dist/js/vendors~index.chunk.js?16116541111101440',
-            '/local/templates/.default/script.js',
-            '/local/templates/.default/components/uplab.production/form.univers/contact-us/script.js',
-            '/local/templates/.default/components/uplab.production/form.univers/cooperation-with-us/script.js',
-            '/local/templates/.default/components/wf/form.univers/form-subscribe/script.js',
-            '/local/templates/.default/components/wf/form.univers/form-invite/script.js',
-            '/local/components/uplab.production/region.selector/templates/default/script.js',
-            '/local/components/bitrix/news.list/templates/dealers_where_card/script.js',
+//            '/local/templates/.default/script.js',
+//            '/local/templates/.default/components/uplab.production/form.univers/contact-us/script.js',
+//            '/local/templates/.default/components/uplab.production/form.univers/cooperation-with-us/script.js',
+//            '/local/templates/.default/components/wf/form.univers/form-subscribe/script.js',
+//            '/local/templates/.default/components/wf/form.univers/form-invite/script.js',
+//            '/local/components/uplab.production/region.selector/templates/default/script.js',
+//            '/local/components/bitrix/news.list/templates/dealers_where_card/script.js',
             '/dist/js/index.js',
             '/dist/js/script.js',
             '/dist/js/components.js',
             '/dist/js/vendors~index.chunk.js',
             '/dist/js/jquery.inputmask.js',
             '/dist/js/owl.carousel.js',
+            '/js/index.js',
         ];
         scriptList.forEach((item) => {
             const el = document.createElement('script');
@@ -95,6 +96,11 @@ $branch = \common\models\Branch::findOne(\Yii::$app->session->get('branch'));
         function onSubmit(token) {
             document.getElementById("demo-form").submit();
         }
+
+        // global JS params
+        window.__webpack_public_path__ = "/dist/";
+        window.site_lang = "ru";
+
     </script>
     <style>
         .rc-anchor {
@@ -200,6 +206,11 @@ $this->endBody();
                 }
             });
         })
+
+        var im = new Inputmask("+7 (999) 999 99 99");
+        var phone = $('[name="PROP_PHONE"], [name="ContactForm[PROP_PHONE]"]');
+        im.mask(phone);
+
         $('#write_us').parsley()
             .on('field:validate', function(e) {
                 console.log(e);
