@@ -4599,7 +4599,7 @@
         grid-template-columns:1fr 1fr 1fr 1fr;
         -ms-grid-rows: auto auto auto auto;
         grid-template-rows:auto auto auto auto;
-        grid-template-areas:"logo logo logo logo" "actions nav nav nav" ". address address address" ". policy policy copyrights"
+        grid-template-areas:"logo logo logo logo" "actions nav nav nav" ". subsidiaries address switcher" ". policy policy copyrights"
     }
 }
 
@@ -4979,8 +4979,7 @@
 
 @media (min-width: 640px) {
     .footer__address-item {
-        margin-bottom: .5rem;
-        margin-right: 1rem;
+        margin-bottom: .5rem
     }
 }
 

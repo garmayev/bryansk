@@ -10,7 +10,6 @@
         document.querySelector(".main-features__accordion:first-child button").classList.add("is-active");
         document.querySelector(".main-features__accordion:first-child .main-features__roll").style.display = "block";
         const feat = document.querySelector("#features");
-        console.log(window.innerHeight);
 
         const fixImage = () => {
             if (feat) {

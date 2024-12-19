@@ -4,7 +4,7 @@ function youtube_parser(url) {
     return (match && match[7].length == 11) ? match[7] : false;
 }
 
-$(window).load(function () {
+window.addEventListener("load", function () {
     $('.video-custom-block-js .video-block-list__el.js-pagination-item').click(function (e) {
         e.preventDefault();
         $('.plyr__control,.plyr__poster').hide();
@@ -64,7 +64,6 @@ jQuery(document).ready(function () {
             list__slide?.removeClass('s-bottom');
         });
     }
-
 
     if ($('#rt-yandex-map:not(.skip-map)').length) {
         console.log('test yandex map');
@@ -628,16 +627,6 @@ $(document).on("change", '.search-form__form input[name="radio-search"]', functi
     BX.showWait();
     $('.search-form__form').trigger("submit");
 })
-
-BX.showWait = function () {
-    var loader = '<div class="bx-loader"><div class="cssload-clock"></div></div>';
-    $('body').append(loader);
-};
-
-BX.closeWait = function () {
-    $('body').find('.bx-loader').remove();
-};
-
 
 $(document).ready(function(){
     $(document).on("change", ".tabs-list .js-select2", function(){

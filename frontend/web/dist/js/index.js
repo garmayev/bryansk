@@ -5649,9 +5649,7 @@ if (window.site_lang == "ru") {
                     {
                         key: "initCanvas",
                         value: function () {
-                            if (this.canvas) {
-                                this.setSizes(), this.setSliderMargin(), (this.canvas.width = this.vW), (this.canvas.height = this.vH), (this.coverCanvas.width = this.vW), (this.coverCanvas.height = this.vH), this.drawImage(this.currentIndex);
-                            }
+                            this.setSizes(), this.setSliderMargin(), (this.canvas.width = this.vW), (this.canvas.height = this.vH), (this.coverCanvas.width = this.vW), (this.coverCanvas.height = this.vH), this.drawImage(this.currentIndex);
                         },
                     },
                     {
@@ -5767,18 +5765,16 @@ if (window.site_lang == "ru") {
                         key: "setSizes",
                         value: function () {
                             var e = this.container.classList.contains("block-slider__wrap--tall");
-                            (this.vH = this.canvas?.dataset.xsHeight || 210),
-                            (0, o.isDesktop)() && (this.vH = this.canvas?.dataset.lgHeight || 600),
-                            (0, o.isTablet)() && (this.vH = this.canvas?.dataset.mdHeight || (e ? 360 : 310)),
+                            (this.vH = this.canvas.dataset.xsHeight || 210),
+                            (0, o.isDesktop)() && (this.vH = this.canvas.dataset.lgHeight || 600),
+                            (0, o.isTablet)() && (this.vH = this.canvas.dataset.mdHeight || (e ? 360 : 310)),
                                 (this.vW = this.container.offsetWidth - 2 * parseInt(getComputedStyle(this.container).paddingLeft, 10));
                         },
                     },
                     {
                         key: "setSliderMargin",
                         value: function () {
-                            if (this.slider) {
-                                this.slider.style.marginTop = (0, o.isDesktop)() ? "".concat(-this.vH / this.numRows, "px") : 0;
-                            }
+                            this.slider.style.marginTop = (0, o.isDesktop)() ? "".concat(-this.vH / this.numRows, "px") : 0;
                         },
                     },
                     {
@@ -5788,7 +5784,7 @@ if (window.site_lang == "ru") {
                                 (this.nav = this.container.querySelector(".nav-arrows")),
                                 (this.pagination = this.container.querySelectorAll(".block-slider__bullet")),
                                 (this.canvas = this.container.querySelector(".block-slider__canvas")),
-                                (this.ctx = this.canvas?.getContext("2d")),
+                                (this.ctx = this.canvas.getContext("2d")),
                                 (this.coverCanvas = document.createElement("canvas")),
                                 (this.coverCtx = this.coverCanvas.getContext("2d")),
                                 (this.slider = this.container.querySelector(this.selector.slider));
@@ -5817,16 +5813,16 @@ if (window.site_lang == "ru") {
                                     n.canAnimate &&
                                     (n.container.classList.remove("ready-change"), t > 0 ? i.dispatchEvent(new CustomEvent("block-slide-change:next")) : i.dispatchEvent(new CustomEvent("block-slide-change:prev")));
                                 };
-                            this.swipeContainer?.addEventListener("mousedown", function (t) {
+                            this.swipeContainer.addEventListener("mousedown", function (t) {
                                 (e = t.clientX), n.swipeContainer.addEventListener("mousemove", o);
                             }),
-                                this.swipeContainer?.addEventListener("mouseup", function () {
+                                this.swipeContainer.addEventListener("mouseup", function () {
                                     n.swipeContainer.removeEventListener("mousemove", o), s();
                                 }),
-                                this.swipeContainer?.addEventListener("touchstart", function (t) {
+                                this.swipeContainer.addEventListener("touchstart", function (t) {
                                     (e = t.changedTouches[0].pageX), n.swipeContainer.addEventListener("touchmove", r);
                                 }),
-                                this.swipeContainer?.addEventListener("touchend", function () {
+                                this.swipeContainer.addEventListener("touchend", function () {
                                     n.swipeContainer.removeEventListener("touchmove", r), s();
                                 });
                         },

@@ -11,7 +11,9 @@ $this->title = "Оригинальные запчасти и сервис";
 $this->registerCssFile("/redizine/parts/custom.css");
 $this->registerCssFile("/redizine/parts/style.css");
 $this->registerCssFile("/redizine/parts/components.css");
+$this->registerJsFile("/redizine/spares-custom.js");
 $this->registerJsFile("/redizine/spares-custom2.js");
+$this->registerJsFile("/redizine/parts/custom.js");
 $this->registerCss(<<<CSS
 .video_banner video {
     height: 140%;
@@ -32,6 +34,7 @@ $this->registerJs(<<<JS
 		parent.find('[data-hash=' + hash + ']').show();
         console.log(hash)
     })
+    const swiper = new Swiper('.equipment__content--small.equipment__content.animate', {});
 JS);
 ?>
 <div class="hero-main video_banner">

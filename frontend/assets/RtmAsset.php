@@ -17,22 +17,22 @@ class RtmAsset extends \yii\web\AssetBundle
         "/bitrix/js/main/pageobject/pageobject.min.js",
         "/bitrix/js/main/core/core_window.min.js",
         "/dist/prog/app.js",
-        "/js/stycky-kit.js", */
-        "/local/templates/.default/script.js",
-        "/local/templates/.default/custom.js",
-        "/local/templates/.default/components/uplab.production/form.univers/contact-us/script.js",
-        "/local/templates/.default/components/uplab.production/form.univers/cooperation-with-us/script.js",
-        "/local/templates/.default/components/wf/form.univers/form-subscribe/script.js",
-        "/local/templates/.default/components/wf/form.univers/form-invite/script.js",
-        "/local/components/uplab.production/region.selector/templates/default/script.js",
-        "/local/components/bitrix/news.list/templates/dealers_where_card/script.js",
+        "/js/stycky-kit.js",
+        "/local/templates/.default/script.js", */
+//        "/local/templates/.default/custom.js",
+//        "/local/templates/.default/components/uplab.production/form.univers/contact-us/script.js",
+//        "/local/templates/.default/components/uplab.production/form.univers/cooperation-with-us/script.js",
+//        "/local/templates/.default/components/wf/form.univers/form-subscribe/script.js",
+//        "/local/templates/.default/components/wf/form.univers/form-invite/script.js",
+//        "/local/components/uplab.production/region.selector/templates/default/script.js",
+//        "/local/components/bitrix/news.list/templates/dealers_where_card/script.js",
 
-        "/dist/js/vendors~index.chunk.js",
-        "/dist/js/index.js",
-        "/dist/js/script.js",
-        "/dist/js/components.js",
-        "/dist/js/jquery.inputmask.js",
-        "/dist/js/owl.carousel.js",
+        "/dist/js/vendors~index.chunk.js?16116541111101440",
+//        "/dist/js/index.js",
+//        "/dist/js/script.js",
+//        "/dist/js/components.js",
+//        "/dist/js/jquery.inputmask.js",
+//        "/dist/js/owl.carousel.js",
 
         "//cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"
     ];
@@ -60,7 +60,6 @@ class RtmAsset extends \yii\web\AssetBundle
 
     public $depends = [
         \yii\web\JqueryAsset::class,
-        \yii\web\YiiAsset::class,
     ];
 
     public $jsOptions = [

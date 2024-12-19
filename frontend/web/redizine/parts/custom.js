@@ -4,7 +4,7 @@ function youtube_parser(url) {
     return (match && match[7].length == 11) ? match[7] : false;
 }
 
-$(window).load(function () {
+window.addEventListener('load',function () {
     $('.video-custom-block-js .video-block-list__el.js-pagination-item').click(function (e) {
         e.preventDefault();
 
@@ -20,7 +20,6 @@ $(window).load(function () {
     })
 })
 var isStarted = false;
-
 
 setTimeout( function () {
     $( ".video-block-video" ).css( "opacity", "0" );
@@ -38,14 +37,16 @@ var myMapAboutCountries;
 var myMapContacts;
 
 jQuery(document).ready(function () {
-    jQuery('.tech-list__side').stick_in_parent(
-        {
-            offset_top: 100
-        }).on("sticky_kit:bottom", function (e) {
-        jQuery('.tech-list__side').addClass('s-bottom');
-    }).on("sticky_kit:unbottom", function (e) {
-        jQuery('.tech-list__side').removeClass('s-bottom');
-    });
+    if (typeof jQuery('.tech-list__side').stick_in_parent !== "undefined") {
+        jQuery('.tech-list__side').stick_in_parent(
+            {
+                offset_top: 100
+            }).on("sticky_kit:bottom", function (e) {
+            jQuery('.tech-list__side').addClass('s-bottom');
+        }).on("sticky_kit:unbottom", function (e) {
+            jQuery('.tech-list__side').removeClass('s-bottom');
+        });
+    }
 
 
     if ($('#rt-yandex-map:not(.skip-map)').length) {
@@ -623,21 +624,10 @@ function showDefaultPopupMessage(title, text, closeBtn) {
     });
 }
 
-
 $(document).on("change", '.search-form__form input[name="radio-search"]', function(){
     BX.showWait();
     $('.search-form__form').trigger("submit");
 })
-
-BX.showWait = function () {
-    var loader = '<div class="bx-loader"><div class="cssload-clock"></div></div>';
-    $('body').append(loader);
-};
-
-BX.closeWait = function () {
-    $('body').find('.bx-loader').remove();
-};
-
 
 $(document).ready(function(){
     $(document).on("change", ".tabs-list .js-select2", function(){
@@ -657,7 +647,6 @@ $(document).scroll(function () {
         }
     }
 });
-
 
 /** NEW DEALER DETAIL */
 $(document).ready(function () {
