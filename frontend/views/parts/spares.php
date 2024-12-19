@@ -22,27 +22,6 @@ $this->registerCss(<<<CSS
 }
 CSS);
 $this->registerJs(<<<JS
-    var y,
-        i = document.querySelector(".header"),
-        o = document.querySelector("body"),
-        v = document.querySelector(".hero-main")
-        w = window.pageYOffset;
-    window.addEventListener( "scroll", function () {
-        y = v ? v.offsetHeight : 300;
-        var t = window.pageYOffset;
-        if (t < w && t > i.offsetHeight) {
-            i.classList.add("is-transformed");
-            o.classList.add("header-is-transformed");
-            var n = i.querySelector("[data-role-list]");
-            n && e(n).slideUp(0);
-        } else i.classList.remove("is-transformed") 
-        o.classList.remove("header-is-transformed");
-        if (window.pageYOffset > y) {
-            i.classList.add("is-fixed");
-            var r = i.querySelector("[data-role-list]");
-            r && e(r).slideUp(0);
-        } else document.body.classList.contains("js-locked") || i.classList.remove("is-fixed");
-    })
     $('.tabs-list__el').on('click', function (e) {
         e.preventDefault();
 		let hash = $(this).attr('data-hash');

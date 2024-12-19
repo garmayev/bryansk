@@ -2,9 +2,35 @@
 
 use common\models\Config;
 
+/**
+ * @var View $this
+ */
+
 $logoWhite = Config::find()->where(['title' => 'logo_white'])->one();
 $logoRed = Config::find()->where(['title' => 'logo_red'])->one();
-
+$this->registerJs(<<<JS
+    var y,
+        i = document.querySelector(".header"),
+        o = document.querySelector("body"),
+        v = document.querySelector(".hero-main")
+        w = window.pageYOffset;
+    window.addEventListener( "scroll", function () {
+        y = v ? v.offsetHeight : 300;
+        var t = window.pageYOffset;
+        if (t < w && t > i.offsetHeight) {
+            i.classList.add("is-transformed");
+            o.classList.add("header-is-transformed");
+            var n = i.querySelector("[data-role-list]");
+            n && e(n).slideUp(0);
+        } else i.classList.remove("is-transformed") 
+        o.classList.remove("header-is-transformed");
+        if (window.pageYOffset > y) {
+            i.classList.add("is-fixed");
+            var r = i.querySelector("[data-role-list]");
+            r && e(r).slideUp(0);
+        } else document.body.classList.contains("js-locked") || i.classList.remove("is-fixed");
+    })
+JS);
 ?>
 <style>
     .logo-white a img:first-child, .logo-red a img:first-child {
@@ -112,6 +138,7 @@ $logoRed = Config::find()->where(['title' => 'logo_red'])->one();
                 use common\models\Section;
                 use yii\helpers\Html;
                 use yii\helpers\Url;
+                use yii\web\View;
 
                 $sections = \common\models\Section::find()->where(['parent_id' => null])->orderBy(['sort' => SORT_ASC])->all();
                 ?>
