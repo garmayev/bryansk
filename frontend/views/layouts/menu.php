@@ -6,53 +6,53 @@ $logoWhite = Config::find()->where(['title' => 'logo_white'])->one();
 $logoRed = Config::find()->where(['title' => 'logo_red'])->one();
 
 ?>
-<header class="header js-header is-white header--has-bottom" data-scroll-lock-fill-gap="">
-    <style>
-        .logo-white a img:first-child, .logo-red a img:first-child {
-            width: 200px;
-        }
-        .r-logo {
-            display: none;
-        }
-        .is-menu-open .r-logo {
-            display: block;
-        }
-        .is-menu-open .w-logo {
-            display: none;
-        }
-        .header__logo {
-            display: none;
-        }
-        .logo-red .n-logo-t {
-            display: none;
-        }
-        .n-logo-t {
-            gap: 0;
-            float: left;
-            align-items: start;
-        }
+<style>
+    .logo-white a img:first-child, .logo-red a img:first-child {
+        width: 200px;
+    }
+    .r-logo {
+        display: none;
+    }
+    .is-menu-open .r-logo {
+        display: block;
+    }
+    .is-menu-open .w-logo {
+        display: none;
+    }
+    .header__logo {
+        display: none;
+    }
+    .logo-red .n-logo-t {
+        display: none;
+    }
+    .n-logo-t {
+        gap: 0;
+        float: left;
+        align-items: start;
+    }
+    .n-logo-t a img {
+    //            margin-top: -30px;
+        width: 200px;
+        float: left;
+    }
+    .header-nav__search {
+        margin-right: 40px;
+        margin-left: 0;
+    }
+    .header-nav__pin { display: none; }
+    @media only screen and (max-device-width: 480px) {
         .n-logo-t a img {
-//            margin-top: -30px;
-            width: 200px;
-            float: left;
+            margin-top: 0;
+            width: 150px;
         }
         .header-nav__search {
-            margin-right: 40px;
-            margin-left: 0;
+            margin-left: 40px;
+            margin-right: 0;
         }
-        .header-nav__pin { display: none; }
-        @media only screen and (max-device-width: 480px) {
-            .n-logo-t a img {
-                margin-top: 0;
-                width: 150px;
-            }
-            .header-nav__search {
-                margin-left: 40px;
-                margin-right: 0;
-            }
-            .header-nav__pin { display: block; }
-        }
-    </style>
+        .header-nav__pin { display: block; }
+    }
+</style>
+<header class="header js-header is-white" data-scroll-lock-fill-gap="">
     <div class="header-wrapper wrapper wrap-pl-1 wrap-pr-1">
         <div class="header__top header-top">
             <div class="header-top__left">

@@ -123,7 +123,6 @@ class SiteController extends Controller
             }
 
             if ($model->validate()) {
-                \Yii::error($model);
                 if ($model->sendEmail()) {
                     return $this->redirect(["/site/index"]);
                 } else {

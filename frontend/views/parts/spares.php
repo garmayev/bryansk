@@ -6,11 +6,12 @@ use yii\web\View;
  * @var View $this
  */
 
+$this->title = "Оригинальные запчасти и сервис";
+
 $this->registerCssFile("/redizine/parts/custom.css");
 $this->registerCssFile("/redizine/parts/style.css");
 $this->registerCssFile("/redizine/parts/components.css");
-$this->registerJsFile("/local/templates/.default/custom.js");
-$this->registerJsFile("https://widgets-04.livetex.me/js/ui.24.48.4854-02f1c3d.js");
+$this->registerJsFile("/redizine/spares-custom2.js");
 $this->registerCss(<<<CSS
 .video_banner video {
     height: 140%;
@@ -20,6 +21,39 @@ $this->registerCss(<<<CSS
     top: 0;
 }
 CSS);
+$this->registerJs(<<<JS
+    var y,
+        i = document.querySelector(".header"),
+        o = document.querySelector("body"),
+        v = document.querySelector(".hero-main")
+        w = window.pageYOffset;
+    window.addEventListener( "scroll", function () {
+        y = v ? v.offsetHeight : 300;
+        var t = window.pageYOffset;
+        if (t < w && t > i.offsetHeight) {
+            i.classList.add("is-transformed");
+            o.classList.add("header-is-transformed");
+            var n = i.querySelector("[data-role-list]");
+            n && e(n).slideUp(0);
+        } else i.classList.remove("is-transformed") 
+        o.classList.remove("header-is-transformed");
+        if (window.pageYOffset > y) {
+            i.classList.add("is-fixed");
+            var r = i.querySelector("[data-role-list]");
+            r && e(r).slideUp(0);
+        } else document.body.classList.contains("js-locked") || i.classList.remove("is-fixed");
+    })
+    $('.tabs-list__el').on('click', function (e) {
+        e.preventDefault();
+		let hash = $(this).attr('data-hash');
+		let parent = $(this).parents('.tabs');
+		parent.find('.tabs-list__el').removeClass('active')
+		$(this).addClass('active');
+		parent.find('.tabs-content__el').hide();
+		parent.find('[data-hash=' + hash + ']').show();
+        console.log(hash)
+    })
+JS);
 ?>
 <div class="hero-main video_banner">
     <div class="hero-main__wrap">
@@ -940,64 +974,8 @@ CSS);
                     })
                 </script>
                 <div class="posstiky">
-                    <div class="form-find-center" style="padding-bottom: 0px;">
-                        <form action="" class="form-find-center__form">
-                            <input type="hidden" id="sp_val" name="sp_val" value="">
-                            <div class="form-find-center__title">Найдите свой сервисный центр</div>
-                            <div class="form-find-center__descr">Укажите свое местоположение для отображения контактов
-                                ближайших сервисных центров
-                            </div>
-                            <div class="form-find-center__search">
-
-                                <div class="form-layout__field">
-                                    <div class="field control--search-wrap">
-                                        <div class="control control--search">
-                                            <div class="input-shell">
-                                                <input name="" autocomplete="off" id="form-search-id" class="input input--default" placeholder="Поиск" type="text">
-                                            </div>
-                                            <a class="header-nav__search-link" aria-label="Поиск" data-search-button="">
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="9.16667" cy="9.16663" r="6.5" stroke="#101010" stroke-width="2"></circle>
-                                                    <path d="M13.75 13.3334L17.9167 17.5" stroke="#101010" stroke-width="2"></path>
-                                                </svg>
-
-                                            </a>
-                                        </div>
-                                        <div class="field control--search-wrap">
-                                            <div id="control--search-drop" class="control--search-drop" style="display: none">
-                                                <div class="control--search-drop-item">
-                                                    <a href="" class="control--search-drop-link">
-                                                        <span class="control--search-drop-name">Московская область</span>
-                                                        <span class="control--search-drop-val">Россия</span>
-                                                    </a>
-                                                </div>
-                                                <div class="control--search-drop-item">
-                                                    <a href="" class="control--search-drop-link">
-                                                        <span class="control--search-drop-name">Москва</span>
-                                                        <span class="control--search-drop-val">Россия</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                     <div class="form-find-center">
-                        <form id="sp-form" action="" class="form-find-center__form">
-                            <div class="form-layout__field">
-
-                                <div id="control--search-result-id" class="control--search-result">
-                                    <div class="control--search-result-item">
-                                        <div class="control--search-result-sub-text">
-                                            Не выбран регион
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
+                        <form id="sp-form" action="/site/contact" method="post" class="form-find-center__form">
                             <div>
                                 <div class="form-find-center__title form-find-center__title--inner">Отправить заявку</div>
                                 <div class="form-find-center__inputs">
@@ -1006,7 +984,7 @@ CSS);
                                             <div class="field">
                                                 <div class="control">
                                                     <div class="input-shell">
-                                                        <input name="fio" class="input input--default" placeholder="ФИО*" type="text" required="">
+                                                        <input name="ContactForm[name]" class="input input--default" placeholder="ФИО*" type="text" required="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1017,8 +995,7 @@ CSS);
                                             <div class="field">
                                                 <div class="control">
                                                     <div class="input-shell">
-                                                        <input name="PROP_PHONE" class="input input--default" placeholder="+7 (___) ___ __ __" data-mask-tel="" data-parsley-pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" type="tel" inputmode="tel" required="" data-parsley-trigger="change" data-initialized-mask="">
-
+                                                        <input name="ContactForm[phone]" class="input input--default" placeholder="+7 (___) ___ __ __" data-mask-tel="" data-parsley-pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" type="tel" inputmode="tel" required="" data-parsley-trigger="change" data-initialized-mask="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1029,23 +1006,7 @@ CSS);
                                             <div class="field">
                                                 <div class="control">
                                                     <div class="input-shell">
-                                                        <input name="region" id="sp_region" class="input input--default" placeholder="Регион*" type="text" required="" autocomplete="off">
-                                                    </div>
-                                                </div>
-                                                <div class="field control--search-wrap">
-                                                    <div id="control--search-drop-2" class="control--search-drop" style="display: none">
-                                                        <div class="control--search-drop-item">
-                                                            <a href="" class="control--search-drop-link">
-                                                                <span class="control--search-drop-name">Московская область</span>
-                                                                <span class="control--search-drop-val">Россия</span>
-                                                            </a>
-                                                        </div>
-                                                        <div class="control--search-drop-item">
-                                                            <a href="" class="control--search-drop-link">
-                                                                <span class="control--search-drop-name">Москва</span>
-                                                                <span class="control--search-drop-val">Россия</span>
-                                                            </a>
-                                                        </div>
+                                                        <input name="ContactForm[email]" class="input input--default" placeholder="E-mail*" type="email" required="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1056,18 +1017,7 @@ CSS);
                                             <div class="field">
                                                 <div class="control">
                                                     <div class="input-shell">
-                                                        <input name="email" class="input input--default" placeholder="E-mail*" type="email" required="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-find-center__item">
-                                        <div class="form-layout__field">
-                                            <div class="field">
-                                                <div class="control">
-                                                    <div class="input-shell">
-                                                        <textarea name="comment" class="input input--default" placeholder="Примечание" type="text"></textarea>
+                                                        <textarea name="ContactForm[message]" class="input input--default" placeholder="Примечание" type="text"></textarea>
                                                     </div>
                                                 </div>
                                             </div>

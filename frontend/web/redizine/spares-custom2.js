@@ -2,7 +2,7 @@
 
 
 $( document ).ready(function() {
-    
+
     $.each($('.js-content-with-slider'), function (indexInArray, valueOfElement) {
 
         let $slider = $(this).addClass('js-content-with-slider-'+indexInArray);
@@ -22,7 +22,7 @@ $( document ).ready(function() {
             let indexEl = $(this).attr('data-hash-link-slide');
             $(this).addClass('asdasdasdasdasd')
             swiper.slideTo(indexEl);
-            // console.log('click ', indexEl);
+            console.log('click ', indexEl);
         });
         swiper.on('slideChange', function () {
             $('.tabs-list__el-t-'+indexInArray).removeClass('active')
