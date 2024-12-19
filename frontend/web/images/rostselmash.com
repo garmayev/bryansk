@@ -63,7 +63,7 @@
 <script>(window.BX||top.BX).message({'pull_server_enabled':'Y','pull_config_timestamp':'1608623327','pull_guest_mode':'N','pull_guest_user_id':'0'});(window.BX||top.BX).message({'PULL_OLD_REVISION':'Для продолжения корректной работы с сайтом необходимо перезагрузить страницу.'});</script>
 <script>BX.Runtime.registerExtension({'name':'pull.client','namespace':'BX','loaded':true});</script>
 <script>BX.Runtime.registerExtension({'name':'pull','namespace':'window','loaded':true});</script>
-<script>(window.BX||top.BX).message({'LANGUAGE_ID':'ru','FORMAT_DATE':'DD.MM.YYYY','FORMAT_DATETIME':'DD.MM.YYYY HH:MI:SS','COOKIE_PREFIX':'BITRIX_SM','SERVER_TZ_OFFSET':'10800','UTF_MODE':'Y','SITE_ID':'s1','SITE_DIR':'/','USER_ID':'','SERVER_TIME':'1734503702','USER_TZ_OFFSET':'0','USER_TZ_AUTO':'Y','bitrix_sessid':'2fd4b329ba6795a8fd7d6e53e8f326d7'});</script>
+<script>(window.BX||top.BX).message({'LANGUAGE_ID':'ru','FORMAT_DATE':'DD.MM.YYYY','FORMAT_DATETIME':'DD.MM.YYYY HH:MI:SS','COOKIE_PREFIX':'BITRIX_SM','SERVER_TZ_OFFSET':'10800','UTF_MODE':'Y','SITE_ID':'s1','SITE_DIR':'/','USER_ID':'','SERVER_TIME':'1734586948','USER_TZ_OFFSET':'0','USER_TZ_AUTO':'Y','bitrix_sessid':'611eab3cd558109e9eeecfb435f39456'});</script>
 
 
 <script src="/bitrix/js/pull/protobuf/protobuf.min.js?160896931276433"></script>
@@ -565,12 +565,12 @@
 										   class="header-nav__submenu-link header-nav__submenu-link--level-2">F 1300</a>
 																	</li>
 															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
-																			<a href="/products/adapters-kmk/zhatka-maize-header/"
-										   class="header-nav__submenu-link header-nav__submenu-link--level-2">Жатка Maize Header</a>
-																	</li>
-															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
 																			<a href="/products/models-kmk/don-680m/"
 										   class="header-nav__submenu-link header-nav__submenu-link--level-2">DON 680M</a>
+																	</li>
+															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
+																			<a href="/products/adapters-kmk/zhatka-maize-header/"
+										   class="header-nav__submenu-link header-nav__submenu-link--level-2">Жатка Maize Header</a>
 																	</li>
 															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
 																			<a href="/products/adapters-kmk/zhatka-grass-header-600/"
@@ -604,16 +604,16 @@
 										   class="header-nav__submenu-link header-nav__submenu-link--level-2">KSU 2</a>
 																	</li>
 															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
+																			<a href="/products/models-shk/f-2450-hemp/"
+										   class="header-nav__submenu-link header-nav__submenu-link--level-2">F 2450 HEMP</a>
+																	</li>
+															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
 																			<a href="/products/adapters-shk/grass-mower-500/"
 										   class="header-nav__submenu-link header-nav__submenu-link--level-2">GRASS MOWER 500</a>
 																	</li>
 															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
 																			<a href="/products/adapters-shk/draper-flow-1050-1250-1400/"
 										   class="header-nav__submenu-link header-nav__submenu-link--level-2">Draper Flow 1050/1250</a>
-																	</li>
-															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
-																			<a href="/products/models-shk/f-2450-hemp/"
-										   class="header-nav__submenu-link header-nav__submenu-link--level-2">F 2450 HEMP</a>
 																	</li>
 													</ul>
 																				<ul class="header-nav__submenu header-nav__submenu--level-2 text-lead"
@@ -631,6 +631,10 @@
 										   class="header-nav__submenu-link header-nav__submenu-link--level-2">STRIGE 2100-3200</a>
 																	</li>
 															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
+																			<a href="/products/koshenie/kosilka-rotornaya-s-konditsionerom-sapsun-2400/"
+										   class="header-nav__submenu-link header-nav__submenu-link--level-2">SAPSUN 2400</a>
+																	</li>
+															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
 																			<a href="/products/pressovanie-i-telezhki/press-podborshchik-tyukovyy-tukan-max-1260-1270/"
 										   class="header-nav__submenu-link header-nav__submenu-link--level-2">TUKAN MAX 1260/1270</a>
 																	</li>
@@ -639,8 +643,8 @@
 										   class="header-nav__submenu-link header-nav__submenu-link--level-2">KOLIBRI DUO 810</a>
 																	</li>
 															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
-																			<a href="/products/koshenie/kosilka-rotornaya-s-konditsionerom-sapsun-2400/"
-										   class="header-nav__submenu-link header-nav__submenu-link--level-2">SAPSUN 2400</a>
+																			<a href="/products/koshenie/kosilka-rotornaya-pritsepnaya-berkut-3200/"
+										   class="header-nav__submenu-link header-nav__submenu-link--level-2">BERKUT 3200</a>
 																	</li>
 															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
 																			<a href="/products/pressovanie-i-telezhki/press-podborshchik-rulonnyy-pelikan-1200/"
@@ -649,10 +653,6 @@
 															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
 																			<a href="/products/valkoobrazovanie/grabli-kolesno-paltsevye-kolibri-v/"
 										   class="header-nav__submenu-link header-nav__submenu-link--level-2">KOLIBRI V</a>
-																	</li>
-															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
-																			<a href="/products/koshenie/kosilka-rotornaya-pritsepnaya-berkut-3200/"
-										   class="header-nav__submenu-link header-nav__submenu-link--level-2">BERKUT 3200</a>
 																	</li>
 															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
 																			<a href="/products/koshenie/kosilka-rotornaya-pritsepnaya-berkut-max/"
@@ -756,12 +756,12 @@
 															<ul class="header-nav__submenu header-nav__submenu--level-2 text-lead"
 							data-id='14' data-animate>
 															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
-																			<a href="/construction/loaders/frontalnyy-pogruzchik-wl-530/"
-										   class="header-nav__submenu-link header-nav__submenu-link--level-2">Фронтальный погрузчик WL 530</a>
+																			<a href="/construction/loaders/teleskopicheskiy-pogruzchik-tlh-740/"
+										   class="header-nav__submenu-link header-nav__submenu-link--level-2">Телескопический погрузчик TLH 740</a>
 																	</li>
 															<li class="header-nav__submenu-item header-nav__submenu-item--level-2">
-																			<a href="/construction/loaders/teleskopicheskiy-pogruzchik-tlh-740/"
-										   class="header-nav__submenu-link header-nav__submenu-link--level-2">Телескопический погрузчик TLH&nbsp;740</a>
+																			<a href="/construction/loaders/frontalnyy-pogruzchik-wl-530/"
+										   class="header-nav__submenu-link header-nav__submenu-link--level-2">Фронтальный погрузчик WL 530</a>
 																	</li>
 													</ul>
 																								<ul class="header-nav__submenu header-nav__submenu--level-1" data-id='15'>
@@ -2458,6 +2458,44 @@
 						<div class="card" itemscope itemtype="http://schema.org/ImageObject">
 
     <a
+                    href="/media/news/ordenonosets-rostselmash/"
+            class="card__inner"
+                    >
+                        
+        <div class="card__img">
+            			<div class="image is-lazy isItemProp"
+			 role="img"
+			 aria-label="Орденоносец работает на технике Ростсельмаш"
+									 data-bg="/upload/resize_cache/iblock/047/ew6nr0mxfdedmdb2k4wbbx3mxspz7k8r/940_520_2/photo_5406661066391414387_x bab97c3b1edbf74e607655d4413c4164-2.jpg"
+			></div>
+	                    </div>
+
+        <div class="card__info">
+
+            <div class="card__info-wrap">
+
+                                    <div class="card__date" data-animate-lines>18.12.2024</div>
+                
+                                    <div
+                            class="card__title text-lead"
+                            data-animate-lines itemprop="name">Орденоносец работает на технике Ростсельмаш</div>
+                
+                
+                
+            </div>
+
+        </div>
+
+
+    </a>
+
+    
+</div>
+					</div>
+									<div class="events-list__col ">
+						<div class="card" itemscope itemtype="http://schema.org/ImageObject">
+
+    <a
                     href="/media/news/nauchnoe-sotrudnichestvo-v-traktorostroenii/"
             class="card__inner"
                     >
@@ -2555,44 +2593,6 @@
                                     <div
                             class="card__title text-lead"
                             data-animate-lines itemprop="name">Аграрии из Беларуси посетили Ростсельмаш</div>
-                
-                
-                
-            </div>
-
-        </div>
-
-
-    </a>
-
-    
-</div>
-					</div>
-									<div class="events-list__col ">
-						<div class="card" itemscope itemtype="http://schema.org/ImageObject">
-
-    <a
-                    href="/media/news/rostselmash-otkryt-dlya-agrariev/"
-            class="card__inner"
-                    >
-                        
-        <div class="card__img">
-            			<div class="image is-lazy isItemProp"
-			 role="img"
-			 aria-label="Ростсельмаш открыт для аграриев"
-									 data-bg="/upload/resize_cache/iblock/40b/rp483tpn81ohcw7k1wdrtwqpe10qklzm/940_520_2/Экскурсия на Ростсельмаш 2024.jpg"
-			></div>
-	                    </div>
-
-        <div class="card__info">
-
-            <div class="card__info-wrap">
-
-                                    <div class="card__date" data-animate-lines>22.11.2024</div>
-                
-                                    <div
-                            class="card__title text-lead"
-                            data-animate-lines itemprop="name">Ростсельмаш открыт для аграриев</div>
                 
                 
                 

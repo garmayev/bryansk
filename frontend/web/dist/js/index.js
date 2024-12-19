@@ -4981,7 +4981,7 @@ if (window.site_lang == "ru") {
                             });
                         });
                     }),
-                    r.addEventListener("mouseover", function () {
+                    r && r.addEventListener("mouseover", function () {
                         clearTimeout(E),
                             b(),
                             u.forEach(function (e) {
@@ -5784,7 +5784,7 @@ if (window.site_lang == "ru") {
                                 (this.nav = this.container.querySelector(".nav-arrows")),
                                 (this.pagination = this.container.querySelectorAll(".block-slider__bullet")),
                                 (this.canvas = this.container.querySelector(".block-slider__canvas")),
-                                (this.ctx = this.canvas.getContext("2d")),
+                                this.canvas && (this.ctx = this.canvas.getContext("2d")),
                                 (this.coverCanvas = document.createElement("canvas")),
                                 (this.coverCtx = this.coverCanvas.getContext("2d")),
                                 (this.slider = this.container.querySelector(this.selector.slider));
@@ -5813,16 +5813,16 @@ if (window.site_lang == "ru") {
                                     n.canAnimate &&
                                     (n.container.classList.remove("ready-change"), t > 0 ? i.dispatchEvent(new CustomEvent("block-slide-change:next")) : i.dispatchEvent(new CustomEvent("block-slide-change:prev")));
                                 };
-                            this.swipeContainer.addEventListener("mousedown", function (t) {
+                            this.swipeContainer && this.swipeContainer.addEventListener("mousedown", function (t) {
                                 (e = t.clientX), n.swipeContainer.addEventListener("mousemove", o);
                             }),
-                                this.swipeContainer.addEventListener("mouseup", function () {
+                                this.swipeContainer && this.swipeContainer.addEventListener("mouseup", function () {
                                     n.swipeContainer.removeEventListener("mousemove", o), s();
                                 }),
-                                this.swipeContainer.addEventListener("touchstart", function (t) {
+                                this.swipeContainer && this.swipeContainer.addEventListener("touchstart", function (t) {
                                     (e = t.changedTouches[0].pageX), n.swipeContainer.addEventListener("touchmove", r);
                                 }),
-                                this.swipeContainer.addEventListener("touchend", function () {
+                                this.swipeContainer && this.swipeContainer.addEventListener("touchend", function () {
                                     n.swipeContainer.removeEventListener("touchmove", r), s();
                                 });
                         },

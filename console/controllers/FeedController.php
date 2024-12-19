@@ -26,9 +26,6 @@ class FeedController extends \yii\console\Controller
             if ($section->save()) {
                 echo "Section #{$section->id} is saved\n";
             }
-            echo "<br/>";
-            ob_flush();
-            flush();
         }
     }
 
@@ -53,21 +50,11 @@ class FeedController extends \yii\console\Controller
                     echo $error;
                 }
             }
-            echo "<br/>";
-            ob_flush();
-            flush();
         }
     }
 
     public function actionImport($target = null)
     {
-        @ob_end_clean();
-        ini_set('output_buffering', 0);
-
-        header('Content-Type: text/event-stream');
-        header("Cache-Control: no-cache, must-revalidate");
-        header("X-Accel-Buffering: no");
-        \Yii::$app->response->stream = true;
         $data = json_decode(file_get_contents("https://rostselmash.com/feed/for-dealers/file.json"), true);
         if ($target === null) {
             $targets = ['catalog', 'electronic-systems'];
@@ -75,10 +62,11 @@ class FeedController extends \yii\console\Controller
                 $this->actionImportSection($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
                 $this->actionImportElement($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
             }
-        }
-        if (isset($data[$target])) {
-            $this->actionImportSection($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
-            $this->actionImportElement($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
+        } else {
+            if (isset($data[$target])) {
+                $this->actionImportSection($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
+                $this->actionImportElement($data[$target], $target === "catalog" ? Section::TYPE_CATALOG : Section::TYPE_ELECTRONIC_SYSTEM);
+            }
         }
     }
 
