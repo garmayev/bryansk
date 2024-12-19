@@ -186,5 +186,17 @@ $cleanPhone = preg_replace('/[\ \(\)\+\-]/', '', $branch->phone);
             flex-direction: column;
         }
     }
-
+    @media (min-width: 990px) {
+        .footer__main-grid {
+            -ms-grid-columns: 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            -ms-grid-rows: auto auto auto auto;
+            grid-template-rows: auto auto auto auto;
+            grid-template-areas:
+        "logo logo logo logo"
+        "actions nav nav nav"
+        ". address address address"
+        ". policy policy copyrights";
+        }
+    }
 </style>
