@@ -66,10 +66,10 @@ $branch = \common\models\Branch::findOne(\Yii::$app->session->get('branch'));
 //            "/bitrix/js/pull/client/pull.client.min.js",
 //            "/bitrix/js/main/pageobject/pageobject.min.js",
 //            '/bitrix/js/main/core/core_window.min.js',
-            '/dist/prog/app.js',
-            '/dist/js/stycky-kit.js',
+//            '/dist/prog/app.js',
+//            '/dist/js/stycky-kit.js',
             '/local/templates/.default/custom.js?t=1',
-            '/dist/js/vendors~index.chunk.js?16116541111101440',
+//            '/dist/js/vendors~index.chunk.js?16116541111101440',
 //            '/local/templates/.default/script.js',
 //            '/local/templates/.default/components/uplab.production/form.univers/contact-us/script.js',
 //            '/local/templates/.default/components/uplab.production/form.univers/cooperation-with-us/script.js',
@@ -77,13 +77,13 @@ $branch = \common\models\Branch::findOne(\Yii::$app->session->get('branch'));
 //            '/local/templates/.default/components/wf/form.univers/form-invite/script.js',
 //            '/local/components/uplab.production/region.selector/templates/default/script.js',
 //            '/local/components/bitrix/news.list/templates/dealers_where_card/script.js',
-            '/dist/js/index.js',
-            '/dist/js/script.js',
-            '/dist/js/components.js',
-            '/dist/js/vendors~index.chunk.js',
+//            '/dist/js/index.js',
+//            '/dist/js/script.js',
+//            '/dist/js/components.js',
+//            '/dist/js/vendors~index.chunk.js',
             '/dist/js/jquery.inputmask.js',
             '/dist/js/owl.carousel.js',
-            '/js/index.js',
+//            '/js/index.js',
         ];
         scriptList.forEach((item) => {
             const el = document.createElement('script');
@@ -231,10 +231,6 @@ $this->endBody();
         })
     })
 </script>
-<div class="mfp-wrap mfp-close-btn-in mfp-auto-cursor mfp-move-from-left mfp-ready" tabindex="-1"
-     style="overflow: hidden auto; display: none;">
-    <div class="mfp-container mfp-inline-holder">
-        <div class="mfp-content">
             <div class="modal mfp-hide mfp-with-anim modal--application" id="leasing">
                 <button title="Close (Esc)" type="button" class="mfp-close">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -953,7 +949,7 @@ JS);
                     </div>
                 </div>
             </div>
-            <div class="modal mfp-with-anim modal--feedback" id="modal-form-1">
+            <div class="modal mfp-hide mfp-with-anim modal--feedback" id="modal-form-1">
                 <button title="Close (Esc)" type="button" class="mfp-close">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
@@ -1116,7 +1112,7 @@ JS);
                     </div>
                 </div>
             </div>
-            <div class="modal mfp-with-anim modal--feedback" id="write_us">
+            <div class="modal mfp-hide mfp-with-anim modal--feedback" id="write_us">
                 <button title="Close (Esc)" type="button" class="mfp-close">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
@@ -1246,7 +1242,7 @@ JS);
                     </div>
                 </div>
             </div>
-            <div class="modal mfp-with-anim modal--application" id="technic-invite">
+            <div class="modal mfp-hide mfp-with-anim modal--application" id="technic-invite">
                 <button title="Close (Esc)" type="button" class="mfp-close">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                          xmlns="http://www.w3.org/2000/svg">
@@ -1395,7 +1391,7 @@ JS);
                     </div>
                 </div>
             </div>
-            <div class="modal mfp-with-anim modal--card modal--feedback" id="modal-region">
+            <div class="modal mfp-hide mfp-with-anim modal--card modal--feedback" id="modal-region">
                 <button title="Close (Esc)" type="button" class="mfp-close">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6 18L18.7279 5.27211" stroke-width="2"></path>
@@ -1425,9 +1421,6 @@ JS);
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 </body>
 <?php
 $this->endPage();

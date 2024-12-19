@@ -12,6 +12,7 @@ $this->registerCssFile("/redizine/parts/custom.css");
 $this->registerCssFile("/redizine/parts/style.css");
 $this->registerCssFile("/redizine/parts/components.css");
 
+$this->registerJsFile("/dist/js/index.js");
 $this->registerJsFile("/redizine/spares-custom2.js");
 
 $this->registerCss(<<<CSS

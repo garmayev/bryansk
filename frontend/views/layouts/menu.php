@@ -406,7 +406,7 @@ JS);
 
 </header>
 <script>
-/*    let over;
+    let over;
     let target;
 
     function is_cursor_on_elem(ev, elem) {
@@ -484,7 +484,7 @@ JS);
         const current = e.currentTarget;
         current && current.classList.remove("is-open");
         over = false;
-    }) */
+    })
 </script>
 <div class="menu">
     <div class="menu__scrollable" data-scroll-lock-scrollable="">

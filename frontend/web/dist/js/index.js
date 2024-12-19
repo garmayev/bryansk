@@ -4961,7 +4961,7 @@ if (window.site_lang == "ru") {
                         : t.classList.contains("header-nav__submenu-link--level-1") &&
                         (t.addEventListener("mouseover", function () {
                             var e = t.dataset.submenuId,
-                                n = i.querySelector("[data-id='".concat(e, "']"));
+                                n = i.querySelector(".header-nav__submenu-link--level-2[data-id='".concat(e, "']"));
                             n &&
                             (E = setTimeout(function () {
                                 C(),

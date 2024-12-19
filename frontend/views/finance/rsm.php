@@ -9,8 +9,8 @@ use yii\web\View;
 echo $this->render('_menu');
 
 $this->title = "Программа лизинга Ростсельмаш Финанс";
-$this->registerJsFile("/redizine/jquery.sticky-kit.js", ['position' => View::POS_LOAD]);
-$this->registerJsFile("/local/components/uplab.production/region.selector/templates/.default/script.js", ['position' => View::POS_LOAD]);
+//$this->registerJsFile("/redizine/jquery.sticky-kit.js", ['position' => View::POS_LOAD]);
+//$this->registerJsFile("/local/components/uplab.production/region.selector/templates/.default/script.js", ['position' => View::POS_LOAD]);
 $this->registerJs(<<<JS
 $(document).on('click', '.js-set-leasing-title-js', function() {
     let item = $(this);
