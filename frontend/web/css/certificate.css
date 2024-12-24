@@ -1,0 +1,112 @@
+.news-list__list--grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px 6px;
+}
+.news-list__list--grid > * {
+	width: 100%;
+	flex: 1 0 100%;
+	max-width: 100%;
+}
+.news-list__list .card-news {
+	width: calc(25% - 6px) !important;
+	flex: none;
+	max-width: none;
+}
+@media (max-width:990px) {
+	.news-list__list .card-news {
+		width: calc(33.3333% - 6px) !important;
+	}
+}
+@media (max-width:768px) {
+	.news-list__list .card-news {
+		width: calc(50%) !important;
+	}
+}
+.card-news__inner.card-news__inner--no-gap {
+	padding: 0;
+	background-color: transparent;
+}
+@media (min-width: 990px) {
+	.card-news__inner.card-news__inner--no-gap {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+}
+/**/ @media (max-width: 899px) {
+	.card-news__content--full {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.card-news__footer,
+	.card-news__content--full {
+		flex-direction: column-reverse;
+	}
+	.card-news__content--full .card-about__info {
+		margin-bottom: 20px;
+		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+	}
+	.card-news__content--full .card-about__info .card-about__info-image {
+		margin-left: 0;
+	}
+}
+@media (min-width: 640px) {
+	.card-news__content--full {
+		flex-wrap: wrap;
+	}
+}
+@media (min-width: 990px) {
+	.card-news__content--full {
+		display: flex;
+	}
+}
+/**/ .card-news__image.card-news__image--full {
+	width: 100%;
+	flex: 1 0 100%;
+	max-width: 100%;
+	margin: 0;
+	margin-bottom: 40px !important;
+	display: block;
+}
+/**/ .wrapper {
+	max-width: 2345px;
+}
+.wrapper--gap-x {
+	padding: 0rem 1.5rem;
+}
+@media (min-width: 990px) {
+	.wrapper--gap-x {
+		padding: 0rem 3rem;
+	}
+}
+/**/ .card-news {
+	position: relative;
+}
+.card-news:hover {
+	z-index: 4;
+}
+.card-news__image {
+    transition: all 0.3s ease;
+}
+.card-news__inner {
+	overflow: hidden;
+}
+.card-news__inner:hover .card-news__image {
+    transform: scale(1.05);
+}
+/**/ .news-list__list--grid > [id^="comp_"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 2px;
+}
+.card-news__title {
+	font-size: 1rem;
+	margin-bottom: 0.75rem;
+}
+.card-news__des--small {
+	font-size: 0.75rem;
+}
